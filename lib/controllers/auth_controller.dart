@@ -1,20 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'dart:async';
 import 'package:get/get.dart';
-import 'package:flutter_dev/models/models.dart';
 import 'package:flutter_dev/ui/auth/auth.dart';
 import 'package:flutter_dev/ui/ui.dart';
 import 'package:flutter_dev/ui/components/components.dart';
 
 class AuthController extends GetxController {
-  static AuthController to = Get.find();
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  final RxBool admin = false.obs;
+
+  RxString username = ''.obs;
+  RxString password = ''.obs;
+  RxBool privacyAgreement = false.obs;
 
   bool get isLogin => false;
+
+  void onPrivacyAgreementChanged(bool value) {
+    privacyAgreement.value = value;
+  }
+
+  void onUsernameChanged(String value) {
+    username.value = value.trim();
+    if (value == '') usernameController.clear();
+  }
+
+  void onPasswordChanged(String value) {
+    password.value = value.trim();
+    if (value == '') passwordController.clear();
+  }
 
   @override
   void onReady() async {
@@ -24,8 +37,7 @@ class AuthController extends GetxController {
 
   @override
   void onClose() {
-    nameController?.dispose();
-    emailController?.dispose();
+    usernameController?.dispose();
     passwordController?.dispose();
     super.onClose();
   }
@@ -45,12 +57,6 @@ class AuthController extends GetxController {
       hideLoadingIndicator();
     }
   }
-
-  //password reset email
-  Future<void> sendPasswordResetEmail(BuildContext context) async {}
-
-  //check if user is an admin user
-  isAdmin() async {}
 
   // Sign out
   Future<void> signOut() {}

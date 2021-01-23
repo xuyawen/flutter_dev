@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:flutter_dev/ui/components/components.dart';
 import 'package:flutter_dev/controllers/binding/binding.dart';
 import 'package:flutter_dev/ui/ui.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   await GetStorage.init();
@@ -25,20 +26,23 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<AppController>(
-        builder: (_) => Loading(
-              child: GetMaterialApp(
-                debugShowCheckedModeBanner: false,
-                initialRoute: Routes.INITIAL,
-                getPages: Routes.routes,
-                theme: Themes.lightTheme,
-                darkTheme: Themes.darkTheme,
-                themeMode: ThemeMode.system,
-                defaultTransition: Transition.zoom,
-                initialBinding: SplashBinding(),
-                builder: hideKeyboardScaffold,
-                home: Splash(),
-              ),
-            ));
+    return ScreenUtilInit(
+        designSize: Size(375, 667),
+        allowFontScaling: false,
+        child: GetBuilder<AppController>(
+            builder: (_) => Loading(
+                  child: GetMaterialApp(
+                    debugShowCheckedModeBanner: false,
+                    initialRoute: Routes.INITIAL,
+                    getPages: Routes.routes,
+                    theme: Themes.lightTheme,
+                    darkTheme: Themes.darkTheme,
+                    themeMode: ThemeMode.system,
+                    defaultTransition: Transition.native,
+                    initialBinding: SplashBinding(),
+                    builder: hideKeyboardScaffold,
+                    home: Splash(),
+                  ),
+                )));
   }
 }

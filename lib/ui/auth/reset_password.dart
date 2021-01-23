@@ -6,7 +6,7 @@ class ResetPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("ResetPasswordUI"),
+      child: Center(child: Text("ResetPasswordUI")),
     );
   }
 }

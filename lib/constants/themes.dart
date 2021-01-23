@@ -4,6 +4,7 @@ class Themes {
   Themes._();
 
   static const Color dodgerBlue = Colors.white;
+  static const Color premaryGreen = Color.fromRGBO(83, 217, 209, 1);
   static const Color whiteLilac = Color.fromRGBO(248, 250, 252, 1);
   static const Color blackPearl = Color.fromRGBO(30, 31, 43, 1);
   static const Color brinkPink = Color.fromRGBO(255, 97, 136, 1);
@@ -16,10 +17,10 @@ class Themes {
   static String fontRoboto = "Roboto";
   //constants color range for light theme
   //main color
-  static const Color _lightPrimaryColor = dodgerBlue;
+  static const Color _lightPrimaryColor = premaryGreen;
 
   //Background Colors
-  static const Color _lightBackgroundColor = whiteLilac;
+  static const Color _lightBackgroundColor = white;
   static const Color _lightBackgroundAppBarColor = _lightPrimaryColor;
   static const Color _lightBackgroundSecondaryColor = white;
   static const Color _lightBackgroundAlertColor = blackPearl;

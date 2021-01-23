@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 /*
 LabelButton(
-                labelText: 'Some Text',
-                onPressed: () => print('implement me'),
-              ),
+  labelText: 'Some Text',
+  onPressed: () => print('implement me'),
+),
 */
 
 class LabelButton extends StatelessWidget {
@@ -18,7 +18,10 @@ class LabelButton extends StatelessWidget {
           padding: MaterialStateProperty.all(const EdgeInsets.only(top: 10.0))),
       child: Text(
         labelText,
-        style: TextStyle(color: Color(0xFF666666), fontSize: 14.0),
+        style: TextStyle(
+            color: Color(0xFF666666),
+            fontSize: 14.0,
+            fontWeight: FontWeight.w400),
       ),
       onPressed: onPressed,
     );

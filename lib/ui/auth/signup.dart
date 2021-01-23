@@ -6,7 +6,7 @@ class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("SignUpUI"),
+      child: Center(child: Text("SignUpUI")),
     );
   }
 }

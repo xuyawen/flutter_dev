@@ -10,9 +10,14 @@ class LinearGradientButton extends StatefulWidget {
   final String text;
   final double top;
   final VoidCallback onTap;
+  final LinearGradient linearGradient;
 
   const LinearGradientButton(
-      {Key key, @required this.text, this.top = 0, this.onTap})
+      {Key key,
+      @required this.text,
+      this.top = 0,
+      this.onTap,
+      this.linearGradient})
       : super(key: key);
 
   @override
@@ -28,10 +33,8 @@ class _LinearGradientButtonState extends State<LinearGradientButton> {
         borderRadius: BorderRadius.circular(ScreenUtil().setHeight(44.0)),
         child: Ink(
           decoration: BoxDecoration(
-            gradient: const LinearGradient(colors: [
-              Color(0xFF58DCB4),
-              Color(0xFF4CD9EE),
-            ]),
+            color: Color(0xFFCCCCCC),
+            gradient: widget.linearGradient,
             borderRadius: BorderRadius.circular(ScreenUtil().setHeight(44.0)),
           ),
           child: InkWell(

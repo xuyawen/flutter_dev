@@ -33,13 +33,13 @@ class App extends StatelessWidget {
             builder: (_) => Loading(
                   child: GetMaterialApp(
                     debugShowCheckedModeBanner: false,
-                    initialRoute: Routes.INITIAL,
+                    initialRoute: Routes.AUDIO,
                     getPages: Routes.routes,
                     theme: Themes.lightTheme,
                     darkTheme: Themes.darkTheme,
                     themeMode: ThemeMode.system,
                     defaultTransition: Transition.native,
-                    initialBinding: SplashBinding(),
+                    // initialBinding: SplashBinding(),
                     builder: hideKeyboardScaffold,
                     home: Splash(),
                   ),

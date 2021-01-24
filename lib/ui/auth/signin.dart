@@ -43,7 +43,7 @@ class SignIn extends GetView<AuthController> {
                       ? GestureDetector(
                           onTap: () => controller.onUsernameChanged(''),
                           child: Icon(Icons.cancel,
-                              color: Color(0xFFCCCCCC), size: 18.ssp),
+                              color: Color(0xFFCCCCCC), size: 15.ssp),
                         )
                       : SizedBox.shrink()),
                   prefixIcon: Icon(IconData(0xe602, fontFamily: 'iconfont'),
@@ -58,7 +58,7 @@ class SignIn extends GetView<AuthController> {
                       ? GestureDetector(
                           onTap: () => controller.onPasswordChanged(''),
                           child: Icon(Icons.cancel,
-                              color: Color(0xFFCCCCCC), size: 18.ssp),
+                              color: Color(0xFFCCCCCC), size: 15.ssp),
                         )
                       : SizedBox.shrink()),
                   prefixIcon: Icon(IconData(0xe60b, fontFamily: 'iconfont'),

@@ -17,6 +17,8 @@ class Routes {
   static const RESET_PASSWORD = '/reset-password';
   static const UPDATE_PROFILE = '/update-profile';
 
+  static const AUDIO = '/audio';
+
   static final routes = [
     GetPage(
       name: SPLASH,
@@ -29,5 +31,6 @@ class Routes {
     GetPage(name: SETTINGS, page: () => Settings()),
     GetPage(name: RESET_PASSWORD, page: () => ResetPassword()),
     GetPage(name: UPDATE_PROFILE, page: () => UpdateProfile()),
+    GetPage(name: AUDIO, page: () => SimpleRecorder()),
   ];
 }

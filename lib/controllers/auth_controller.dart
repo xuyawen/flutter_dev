@@ -29,8 +29,17 @@ class AuthController extends GetxController {
     if (value == '') passwordController.clear();
   }
 
+  void devMock() {
+    onPrivacyAgreementChanged(true);
+    onUsernameChanged('test');
+    onPasswordChanged('123123');
+    usernameController.text = 'test';
+    passwordController.text = '123123';
+  }
+
   @override
   void onReady() async {
+    devMock();
     // handleAuthChanged(true);
     super.onReady();
   }

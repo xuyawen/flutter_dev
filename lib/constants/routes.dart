@@ -17,6 +17,11 @@ class Routes {
   static const RESET_PASSWORD = '/reset-password';
   static const UPDATE_PROFILE = '/update-profile';
 
+  // demo
+  static const AUDIO = '/audio';
+  static const WAVE = '/wave';
+  static const CHATS = '/chats';
+
   static final routes = [
     GetPage(
       name: SPLASH,
@@ -29,5 +34,8 @@ class Routes {
     GetPage(name: SETTINGS, page: () => Settings()),
     GetPage(name: RESET_PASSWORD, page: () => ResetPassword()),
     GetPage(name: UPDATE_PROFILE, page: () => UpdateProfile()),
+    GetPage(name: AUDIO, page: () => SimpleRecorder()),
+    GetPage(name: WAVE, page: () => WaveDemo()),
+    GetPage(name: CHATS, page: () => ChatHome()),
   ];
 }

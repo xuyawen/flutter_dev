@@ -23,14 +23,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  path_provider: ^1.6.27
-  get: ^3.24.0
-  get_storage: ^1.4.0
-  flutter_screenutil: ^4.0.2+5
-  jpush_flutter: ^0.6.2
-  flutter_sound: ^6.0.0
-  permission_handler: ^5.0.1
-  wave: ^0.1.0
+  path_provider: 1.6.27
+  get: 3.24.0
+  get_storage: 1.4.0
+  flutter_screenutil: 4.0.2+5
+  jpush_flutter: 0.6.2
+  flutter_sound: 6.0.0
+  permission_handler: 5.0.1
+  wave: 0.1.0
 
 
   # The following adds the Cupertino Icons font to your application.

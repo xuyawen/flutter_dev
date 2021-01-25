@@ -103,21 +103,7 @@ packages:
       name: flutter_sound
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "6.4.8+2"
-  flutter_sound_platform_interface:
-    dependency: transitive
-    description:
-      name: flutter_sound_platform_interface
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "6.4.8+2"
-  flutter_sound_web:
-    dependency: transitive
-    description:
-      name: flutter_sound_web
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "6.4.8+2"
+    version: "6.0.0"
   flutter_spinkit:
     dependency: transitive
     description:
@@ -127,11 +113,6 @@ packages:
     version: "4.1.2+1"
   flutter_test:
     dependency: "direct dev"
-    description: flutter
-    source: sdk
-    version: "0.0.0"
-  flutter_web_plugins:
-    dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -163,20 +144,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.6.2"
-  js:
-    dependency: transitive
-    description:
-      name: js
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.6.3-nullsafety.3"
   logger:
     dependency: transitive
     description:
       name: logger
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.9.4"
+    version: "0.7.0+2"
   matcher:
     dependency: transitive
     description:
@@ -246,7 +220,7 @@ packages:
       name: permission_handler
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "5.0.1+1"
+    version: "5.0.1"
   permission_handler_platform_interface:
     dependency: transitive
     description:
@@ -288,7 +262,7 @@ packages:
       name: recase
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.0.1"
+    version: "2.0.1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -387,4 +361,4 @@ packages:
     version: "0.1.2"
 sdks:
   dart: ">=2.12.0-0.0 <3.0.0"
-  flutter: ">=1.16.0"
+  flutter: ">=1.16.0 <2.0.0"

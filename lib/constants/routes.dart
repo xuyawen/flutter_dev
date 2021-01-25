@@ -24,11 +24,11 @@ class Routes {
 
   static final routes = [
     GetPage(
-      name: SPLASH,
+      name: INITIAL,
       page: () => Splash(),
       binding: SplashBinding(),
     ),
-    GetPage(name: SIGNIN, page: () => SignIn()),
+    GetPage(name: SIGNIN, page: () => SignIn(), binding: AuthBinding()),
     GetPage(name: SIGNUP, page: () => SignUp()),
     GetPage(name: HOME, page: () => Home()),
     GetPage(name: SETTINGS, page: () => Settings()),

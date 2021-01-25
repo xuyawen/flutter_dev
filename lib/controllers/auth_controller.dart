@@ -39,6 +39,7 @@ class AuthController extends GetxController {
 
   @override
   void onReady() async {
+    print("12313++++======++++++21323");
     devMock();
     // handleAuthChanged(true);
     super.onReady();
@@ -68,5 +69,5 @@ class AuthController extends GetxController {
   }
 
   // Sign out
-  Future<void> signOut() {}
+  Future<void> signOut() async {}
 }

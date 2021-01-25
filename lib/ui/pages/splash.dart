@@ -52,23 +52,38 @@ class Splash extends StatelessWidget {
                         fontSize: 14.0.ssp),
                   ),
                   SizedBox(height: 125.h),
-                  AnimatedBuilder(
-                    builder: (context, widget) => Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          "assets/images/splash-green.png",
-                          width: 22.0.w,
-                          height: 24.5.h,
-                        ),
-                        Image.asset(
-                          "assets/images/splash-yellow.png",
-                          width: 22.0.w,
-                          height: 24.5.h,
-                        )
-                      ],
-                    ),
-                    animation: _.animationController,
+                  // AnimatedBuilder(
+                  //   builder: (context, widget) => Row(
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     children: [
+                  //       Image.asset(
+                  //         "assets/images/splash-green.png",
+                  //         width: 22.0.w,
+                  //         height: 24.5.h,
+                  //       ),
+                  //       Image.asset(
+                  //         "assets/images/splash-yellow.png",
+                  //         width: 22.0.w,
+                  //         height: 24.5.h,
+                  //       )
+                  //     ],
+                  //   ),
+                  //   animation: _.animationController,
+                  // ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/splash-green.png",
+                        width: 22.0.w,
+                        height: 24.5.h,
+                      ),
+                      Image.asset(
+                        "assets/images/splash-yellow.png",
+                        width: 22.0.w,
+                        height: 24.5.h,
+                      )
+                    ],
                   ),
                   SizedBox(height: 132.h),
                   Text(

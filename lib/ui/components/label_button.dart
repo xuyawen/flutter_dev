@@ -15,7 +15,7 @@ class LabelButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
-          padding: MaterialStateProperty.all(const EdgeInsets.only(top: 10.0))),
+          padding: MaterialStateProperty.all(const EdgeInsets.only(top: 0.0))),
       child: Text(
         labelText,
         style: TextStyle(

@@ -43,11 +43,12 @@ class FormInputField extends StatelessWidget {
       decoration: BoxDecoration(
           border: Border(
               bottom: BorderSide(width: 0.5.w, color: Color(0xFFEEEEEE)))),
-      constraints: BoxConstraints(maxHeight: ScreenUtil().setHeight(86.0)),
+      constraints: BoxConstraints(maxHeight: ScreenUtil().setHeight(36.0)),
       child: TextFormField(
         decoration: InputDecoration(
             prefixIcon: prefixIcon,
             suffixIcon: suffixIcon,
+            contentPadding: EdgeInsets.symmetric(vertical: 0),
             prefixStyle: TextStyle(color: Color(0xFFD1D1D1)),
             hintText: labelText,
             hintStyle: TextStyle(fontSize: 14.ssp, color: Color(0xFFD1D1D1)),

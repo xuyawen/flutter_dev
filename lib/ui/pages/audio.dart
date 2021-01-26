@@ -92,7 +92,7 @@ class _SimpleRecorderState extends State<SimpleRecorder> {
     }
 
     var tempDir = await getTemporaryDirectory();
-    _mPath = '${tempDir.path}/flutter_sound_example.aac';
+    _mPath = '${tempDir.path}/flutter_sound_example.wav';
     var outputFile = File(_mPath);
     if (outputFile.existsSync()) {
       await outputFile.delete();
@@ -107,7 +107,7 @@ class _SimpleRecorderState extends State<SimpleRecorder> {
     assert(_mRecorderIsInited && _mPlayer.isStopped);
     await _mRecorder.startRecorder(
       toFile: _mPath,
-      codec: Codec.aacADTS,
+      codec: Codec.pcm16WAV,
     );
     setState(() {});
   }
@@ -118,13 +118,14 @@ class _SimpleRecorderState extends State<SimpleRecorder> {
   }
 
   void play() async {
+    print('_mPath$_mPath');
     assert(_mPlayerIsInited &&
         _mplaybackReady &&
         _mRecorder.isStopped &&
         _mPlayer.isStopped);
     await _mPlayer.startPlayer(
         fromURI: _mPath,
-        codec: Codec.aacADTS,
+        codec: Codec.pcm16WAV,
         whenFinished: () {
           setState(() {});
         });

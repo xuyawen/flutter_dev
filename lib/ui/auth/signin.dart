@@ -11,9 +11,9 @@ class SignIn extends GetView<AuthController> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: WillPopExit(
-      child: Form(
+    return WillPopExit(
+        child: Scaffold(
+      body: Form(
         key: _formKey,
         child: SingleChildScrollView(
           child: Padding(
@@ -50,7 +50,7 @@ class SignIn extends GetView<AuthController> {
                         : SizedBox.shrink()),
                     prefixIcon: Icon(IconData(0xe602, fontFamily: 'iconfont'),
                         size: 20.ssp, color: Color(0xFFACACAC))),
-                SizedBox(height: 10.0.h),
+                SizedBox(height: 18.0.h),
                 FormInputField(
                     labelText: "请输入密码",
                     obscureText: true,
@@ -113,6 +113,7 @@ class SignIn extends GetView<AuthController> {
                         // Get.toNamed(Routes.HOME);
                       },
                     )),
+                SizedBox(height: 10.0.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

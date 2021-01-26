@@ -4,3 +4,4 @@ export 'pages/splash.dart';
 export 'pages/audio.dart';
 export 'pages/wave.dart';
 export 'pages/chat.dart';
+export 'pages/qr_card.dart';

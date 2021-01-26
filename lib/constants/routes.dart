@@ -12,9 +12,10 @@ class Routes {
   static const SIGNIN = '/signin';
   static const SIGNUP = '/signup';
   static const PROFILE = '/profile';
-  static const HOME = '/home';
-  static const SETTINGS = '/settings';
   static const RESET_PASSWORD = '/reset-password';
+  static const HOME = '/home';
+  static const QRCARD = '/qr-card';
+  static const SETTINGS = '/settings';
   static const UPDATE_PROFILE = '/update-profile';
 
   // demo
@@ -34,6 +35,7 @@ class Routes {
     GetPage(name: SETTINGS, page: () => Settings()),
     GetPage(name: RESET_PASSWORD, page: () => ResetPassword()),
     GetPage(name: UPDATE_PROFILE, page: () => UpdateProfile()),
+    GetPage(name: QRCARD, page: () => QRcard()),
     GetPage(name: AUDIO, page: () => SimpleRecorder()),
     GetPage(name: WAVE, page: () => WaveDemo()),
     GetPage(name: CHATS, page: () => ChatHome()),

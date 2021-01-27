@@ -15,8 +15,12 @@ class Routes {
   static const RESET_PASSWORD = '/reset-password';
   static const HOME = '/home';
   static const QRCARD = '/qr-card';
+  static const PATIENTGROUP = '/patient-group';
   static const SETTINGS = '/settings';
   static const UPDATE_PROFILE = '/update-profile';
+  static const GROUP_MANAGE = '/group_manage';
+  static const ADDGROUP = '/add_group';
+  static const CHOOSEPATIENT = '/choose_patient';
 
   // demo
   static const AUDIO = '/audio';
@@ -36,6 +40,11 @@ class Routes {
     GetPage(name: RESET_PASSWORD, page: () => ResetPassword()),
     GetPage(name: UPDATE_PROFILE, page: () => UpdateProfile()),
     GetPage(name: QRCARD, page: () => QRcard()),
+    GetPage(name: PATIENTGROUP, page: () => PatientGroup()),
+    GetPage(name: GROUP_MANAGE, page: () => GroupManage()),
+    GetPage(name: ADDGROUP, page: () => AddGroup()),
+    GetPage(name: CHOOSEPATIENT, page: () => ChoosePatient()),
+    // demo
     GetPage(name: AUDIO, page: () => SimpleRecorder()),
     GetPage(name: WAVE, page: () => WaveDemo()),
     GetPage(name: CHATS, page: () => ChatHome()),

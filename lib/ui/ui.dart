@@ -5,3 +5,7 @@ export 'pages/audio.dart';
 export 'pages/wave.dart';
 export 'pages/chat.dart';
 export 'pages/qr_card.dart';
+export 'pages/patient_group.dart';
+export 'pages/group_manage.dart';
+export 'pages/add_group.dart';
+export 'pages/choose_patient.dart';

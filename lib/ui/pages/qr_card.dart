@@ -11,6 +11,7 @@ class QRcard extends StatelessWidget {
         backgroundColor: Color(0xFF58DCB4),
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.white),
+        shadowColor: Color(0xFF58DCB4),
         elevation: 0,
         title: Text(
           "二维码名片",
@@ -34,12 +35,94 @@ class QRcard extends StatelessWidget {
               Container(
                   width: 295.w,
                   height: 370.h,
+                  padding: EdgeInsets.only(left: 37.w),
                   margin: EdgeInsets.fromLTRB(40.w, 66.h, 40.w, 55.h),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(8.r)),
                   ),
-                  child: Text("张医生")),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 15.0.h),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 56.0.w,
+                            height: 56.0.h,
+                            child: CircleAvatar(
+                                backgroundColor:
+                                    Color.fromRGBO(255, 255, 255, .2),
+                                backgroundImage: AssetImage(
+                                    "assets/images/doctor-default.png")),
+                          ),
+                          SizedBox(width: 4.0.w),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text("张医生",
+                                      style: TextStyle(
+                                          color: Color(0xFF333333),
+                                          fontSize: 16.ssp)),
+                                  Container(
+                                    margin: EdgeInsets.only(left: 8.0.w),
+                                    padding: EdgeInsets.only(left: 13.0.w),
+                                    height: 19.h,
+                                    width: 69.w,
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(8.r)),
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/images/badge.png"),
+                                      ),
+                                    ),
+                                    child: Text("主任医师",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 11.ssp,
+                                            fontWeight: FontWeight.bold)),
+                                  )
+                                ],
+                              ),
+                              SizedBox(height: 6.h),
+                              Row(
+                                children: [
+                                  Text("上海龙华医院",
+                                      style: TextStyle(
+                                          color: Color(0xFF999999),
+                                          fontSize: 14.sp,
+                                          height: 1.h)),
+                                  SizedBox(width: 20.w),
+                                  Text(
+                                    "骨科",
+                                    style: TextStyle(
+                                        color: Color(0xFF999999),
+                                        fontSize: 14.0.sp,
+                                        height: 1.h),
+                                  )
+                                ],
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                      SizedBox(height: 15.h),
+                      Padding(
+                          padding: EdgeInsets.only(left: 5.w),
+                          child: Image.asset("assets/images/qrcode-img.png",
+                              width: 211.w, height: 211.h)),
+                      SizedBox(height: 20.h),
+                      Padding(
+                          padding: EdgeInsets.only(left: 8.5.w),
+                          child: Text("患者扫一扫上面的二维码，加入工作站",
+                              style: TextStyle(
+                                  color: Color(0xFF999999), fontSize: 12.sp)))
+                    ],
+                  )),
               InkWell(
                 onTap: () {},
                 child: Container(

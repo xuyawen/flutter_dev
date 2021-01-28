@@ -58,79 +58,6 @@ class _ChoosePatientState extends State<ChoosePatient> {
     setState(() {});
   }
 
-  Widget _buildHeader() {
-    return Container(
-      padding: EdgeInsets.all(20),
-      alignment: Alignment.center,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          ClipOval(
-              child: Image.asset(
-            "./assets/images/qrcode.png",
-            width: 80.0,
-          )),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              "远行",
-              textScaleFactor: 1.2,
-            ),
-          ),
-          Text("+86 182-286-44678"),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSusWidget(String susTag) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15.0),
-      height: susItemHeight,
-      width: double.infinity,
-      alignment: Alignment.centerLeft,
-      child: Row(
-        children: <Widget>[
-          Text(
-            '$susTag',
-            textScaleFactor: 1.2,
-          ),
-          Expanded(
-              child: Divider(
-            height: .0,
-            indent: 10.0,
-          ))
-        ],
-      ),
-    );
-  }
-
-  Widget _buildListItem(ContactInfo model) {
-    String susTag = model.getSuspensionTag();
-    return Column(
-      children: <Widget>[
-        Offstage(
-          offstage: model.isShowSuspension != true,
-          child: _buildSusWidget(susTag),
-        ),
-        ListTile(
-          leading: CircleAvatar(
-            backgroundColor: Colors.blue[700],
-            child: Text(
-              model.name[0],
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          title: Text(model.name),
-          onTap: () {
-            print("OnItemClick: $model");
-            Navigator.pop(context, model);
-          },
-        )
-      ],
-    );
-  }
-
   Decoration getIndexBarDecoration(Color color) {
     return BoxDecoration(
         color: color,
@@ -157,15 +84,21 @@ class _ChoosePatientState extends State<ChoosePatient> {
                 padding: EdgeInsets.all(15),
                 child: SizedBox(
                   child: ElevatedButton(
-                      style: ButtonStyle(backgroundColor:
-                          MaterialStateProperty.resolveWith((states) {
-                        //设置按下时的背景颜色
-                        // if (states.contains(MaterialState.pressed)) {
-                        //   return Colors.blue[200];
-                        // }
-                        //默认不使用背景颜色
-                        return Colors.white;
-                      })),
+                      style: ButtonStyle(
+                          elevation: MaterialStateProperty.all(0),
+                          overlayColor:
+                              MaterialStateProperty.all(Color(0xFF9EEEE7)),
+                          side: MaterialStateProperty.all(
+                              BorderSide(color: Color(0xFF02D4C2), width: 1)),
+                          backgroundColor:
+                              MaterialStateProperty.resolveWith((states) {
+                            //设置按下时的背景颜色
+                            // if (states.contains(MaterialState.pressed)) {
+                            //   return Colors.blue[200];
+                            // }
+                            //默认不使用背景颜色
+                            return Colors.white;
+                          })),
                       onPressed: () => Get.back(),
                       child: Text("完成",
                           style: TextStyle(
@@ -186,32 +119,69 @@ class _ChoosePatientState extends State<ChoosePatient> {
               Padding(
                   padding:
                       EdgeInsets.symmetric(vertical: 10.h, horizontal: 16.w),
-                  child: TextFormField(
+                  child: TextField(
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(16.w, 0, 0, 0),
-                        suffixIcon: Icon(Icons.lens),
+                        suffixIcon: Icon(
+                            IconData(0xe600, fontFamily: 'iconfont'),
+                            size: 12.ssp,
+                            color: Color(0xFFACACAC)),
                         prefixStyle: TextStyle(color: Color(0xFFD1D1D1)),
                         hintText: "输入患者相关信息搜索",
                         hintStyle: TextStyle(
                             fontSize: 13.sp, color: Color(0xFF999999)),
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Colors.white, width: 0.0),
+                              BorderSide(color: Color(0xFFE1E1E1), width: 1.0),
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
                         ),
                         focusColor: Colors.black,
                         focusedBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Colors.white, width: 0.0),
+                              BorderSide(color: Color(0xFFE1E1E1), width: 1.0),
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
                         ),
                         filled: true,
                         fillColor: Color(0xFFFFFFFF)),
                     maxLines: 1,
                   )),
-              Container(
-                color: Color(0xFFFFFFFF),
-                child: ,
+              Expanded(
+                child: AzListView(
+                  data: _contacts,
+                  itemCount: _contacts.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    ContactInfo model = _contacts[index];
+                    return getWeChatListItem(
+                      context,
+                      model,
+                      defHeaderBgColor: Color(0xFFE5E5E5),
+                    );
+                  },
+                  physics: BouncingScrollPhysics(),
+                  susItemBuilder: (BuildContext context, int index) {
+                    ContactInfo model = _contacts[index];
+                    return getSusItem(context, model.getSuspensionTag());
+                  },
+                  indexBarData: [...kIndexBarData],
+                  indexBarOptions: IndexBarOptions(
+                    needRebuild: true,
+                    ignoreDragCancel: true,
+                    downTextStyle: TextStyle(fontSize: 12, color: Colors.white),
+                    downItemDecoration: BoxDecoration(
+                        shape: BoxShape.circle, color: Color(0xFF31ADFF)),
+                    indexHintWidth: 120 / 2,
+                    indexHintHeight: 100 / 2,
+                    indexHintDecoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(getImgPath('bubble_gray')),
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                    indexHintAlignment: Alignment.centerRight,
+                    indexHintChildAlignment: Alignment(-0.25, 0.0),
+                    indexHintOffset: Offset(-20, 0),
+                  ),
+                ),
               )
             ],
           ),
@@ -255,13 +225,8 @@ class ContactInfo extends ISuspensionBean {
         firstletter = json['firstletter'];
 
   Map<String, dynamic> toJson() => {
-//        'id': id,
         'name': name,
         'img': img,
-//        'firstletter': firstletter,
-//        'tagIndex': tagIndex,
-//        'namePinyin': namePinyin,
-//        'isShowSuspension': isShowSuspension
       };
 
   @override
@@ -277,75 +242,94 @@ Widget getWeChatListItem(
   double susHeight = 40,
   Color defHeaderBgColor,
 }) {
-  return getWeChatItem(context, model, defHeaderBgColor: defHeaderBgColor);
-//    return Column(
-//      mainAxisSize: MainAxisSize.min,
-//      children: <Widget>[
-//        Offstage(
-//          offstage: !(model.isShowSuspension == true),
-//          child: getSusItem(context, model.getSuspensionTag(),
-//              susHeight: susHeight),
-//        ),
-//        getWeChatItem(context, model, defHeaderBgColor: defHeaderBgColor),
-//      ],
-//    );
-}
-
-Widget getWeChatItem(
-  BuildContext context,
-  ContactInfo model, {
-  Color defHeaderBgColor,
-}) {
-  DecorationImage image;
-//    if (model.img != null && model.img.isNotEmpty) {
-//      image = DecorationImage(
-//        image: CachedNetworkImageProvider(model.img),
-//        fit: BoxFit.contain,
-//      );
-//    }
-  return ListTile(
-    leading: Container(
-      width: 36,
-      height: 36,
-      decoration: BoxDecoration(
-        shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.circular(4.0),
-        color: model.bgColor ?? defHeaderBgColor,
-        image: image,
-      ),
-      child: model.iconData == null
-          ? null
-          : Icon(
-              model.iconData,
-              color: Colors.white,
-              size: 20,
-            ),
-    ),
-    title: Text(model.name),
-    onTap: () {
-      //LogUtil.e("onItemClick : $model");
-      // Utils.showSnackBar(context, 'onItemClick : ${model.name}');
-    },
+  return GestureDetector(
+    onTap: () {},
+    child: getcheckBoxItem(context, model),
   );
 }
 
-Widget getSusItem(BuildContext context, String tag, {double susHeight = 40}) {
-  if (tag == '★') {
-    tag = '★ 热门城市';
-  }
+Widget getcheckBoxItem(BuildContext context, ContactInfo model) {
+  // DecorationImage image;
+  return checkBoxItem();
+}
+
+Widget getSusItem(BuildContext context, String tag) {
   return Container(
-    height: susHeight,
+    height: 30.h,
     width: MediaQuery.of(context).size.width,
     padding: EdgeInsets.only(left: 16.0),
-    color: Color(0xFFF3F4F5),
+    color: Color(0xFFF3F9F8),
     alignment: Alignment.centerLeft,
     child: Text(
       '$tag',
       softWrap: false,
       style: TextStyle(
         fontSize: 14.0,
-        color: Color(0xFF666666),
+        color: Color(0xFF999999),
       ),
     ),
   );
+}
+
+Widget checkBoxItem() {
+  return Container(
+      padding:
+          EdgeInsets.only(top: 10.h, bottom: 10.h, left: 16.w, right: 12.w),
+      color: Colors.white,
+      child: Row(
+        children: [
+          Image.asset("assets/images/unselect.png", width: 20.w, height: 20.h),
+          SizedBox(width: 6.w),
+          CircleAvatar(
+              backgroundImage: AssetImage(
+            "assets/images/patient-remind.png",
+          )),
+          SizedBox(width: 8.w),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Text("张潇潇"),
+                  Padding(
+                      padding: EdgeInsets.only(left: 6.w, right: 6.w),
+                      child: Image.asset("assets/images/male-icon.png",
+                          width: 12.w, height: 12.h)),
+                  Text("35岁",
+                      style:
+                          TextStyle(color: Color(0xFF999999), fontSize: 12.sp)),
+                  SizedBox(width: 20.w),
+                  Text("神经根型颈椎病",
+                      style:
+                          TextStyle(color: Color(0xFF999999), fontSize: 13.sp))
+                ],
+              ),
+              SizedBox(height: 6.h),
+              Wrap(
+                spacing: 7.w,
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(
+                        left: 4.w, top: 2.h, right: 4.w, bottom: 2.h),
+                    decoration: BoxDecoration(
+                        color: Color(0xFF3FD4C8),
+                        borderRadius: BorderRadius.all(Radius.circular(4.r))),
+                    child: Text("标签名",
+                        style: TextStyle(color: Colors.white, fontSize: 12.sp)),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(
+                        left: 4.w, top: 2.h, right: 4.w, bottom: 2.h),
+                    decoration: BoxDecoration(
+                        color: Color(0xFF3FD4C8),
+                        borderRadius: BorderRadius.all(Radius.circular(4.r))),
+                    child: Text("标签名",
+                        style: TextStyle(color: Colors.white, fontSize: 12.sp)),
+                  )
+                ],
+              )
+            ],
+          )
+        ],
+      ));
 }

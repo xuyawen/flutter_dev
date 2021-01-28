@@ -15,6 +15,7 @@ class LabelButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
+          overlayColor: MaterialStateProperty.all(Color(0xFF58DCB4)),
           padding: MaterialStateProperty.all(const EdgeInsets.only(top: 0.0))),
       child: Text(
         labelText,

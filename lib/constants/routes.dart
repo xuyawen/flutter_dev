@@ -19,8 +19,11 @@ class Routes {
   static const SETTINGS = '/settings';
   static const UPDATE_PROFILE = '/update-profile';
   static const GROUP_MANAGE = '/group_manage';
-  static const ADDGROUP = '/add_group';
+  static const MODIFYGROUP = '/modify_group';
   static const CHOOSEPATIENT = '/choose_patient';
+  static const PATIENTDETAIL = '/patient_detail';
+  static const MASSMESSAGE = '/mass_message';
+  static const CHOOSEGROUP = '/choose_group';
 
   // demo
   static const AUDIO = '/audio';
@@ -42,8 +45,11 @@ class Routes {
     GetPage(name: QRCARD, page: () => QRcard()),
     GetPage(name: PATIENTGROUP, page: () => PatientGroup()),
     GetPage(name: GROUP_MANAGE, page: () => GroupManage()),
-    GetPage(name: ADDGROUP, page: () => AddGroup()),
+    GetPage(name: MODIFYGROUP, page: () => ModifyGroup()),
     GetPage(name: CHOOSEPATIENT, page: () => ChoosePatient()),
+    GetPage(name: PATIENTDETAIL, page: () => PatientDetail()),
+    GetPage(name: MASSMESSAGE, page: () => MassMessage()),
+    GetPage(name: CHOOSEGROUP, page: () => ChooseGroup()),
     // demo
     GetPage(name: AUDIO, page: () => SimpleRecorder()),
     GetPage(name: WAVE, page: () => WaveDemo()),

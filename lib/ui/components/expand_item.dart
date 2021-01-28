@@ -23,13 +23,14 @@ Widget expandItem() {
                       Text("张潇潇"),
                       Padding(
                           padding: EdgeInsets.only(left: 6.w, right: 6.w),
-                          child: Image.asset("assets/images/patient-remind.png",
+                          child: Image.asset("assets/images/male-icon.png",
                               width: 12.w, height: 12.h)),
                       Text("35岁"),
                     ],
                   ),
                   SizedBox(height: 6.h),
-                  Row(
+                  Wrap(
+                    spacing: 7.w,
                     children: [
                       Container(
                         padding: EdgeInsets.only(

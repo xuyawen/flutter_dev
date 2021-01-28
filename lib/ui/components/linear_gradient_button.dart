@@ -28,17 +28,19 @@ class _LinearGradientButtonState extends State<LinearGradientButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: ScreenUtil().setHeight(widget.top)),
+      margin: EdgeInsets.only(top: widget.top.h),
       child: Material(
-        borderRadius: BorderRadius.circular(ScreenUtil().setHeight(44.0)),
+        borderRadius: BorderRadius.circular(44.0.r),
         child: Ink(
           decoration: BoxDecoration(
             color: Color(0xFFCCCCCC),
             gradient: widget.linearGradient,
-            borderRadius: BorderRadius.circular(ScreenUtil().setHeight(44.0)),
+            borderRadius: BorderRadius.circular(44.0.r),
           ),
           child: InkWell(
-            borderRadius: BorderRadius.circular(ScreenUtil().setHeight(44.0)),
+            // highlightColor: Color(0xFF58DCB4),
+            splashColor: Color(0xFF58DCB4),
+            borderRadius: BorderRadius.circular(44.0.r),
             onTap: widget.onTap,
             child: Container(
               alignment: Alignment.center,
@@ -48,7 +50,7 @@ class _LinearGradientButtonState extends State<LinearGradientButton> {
                 widget.text,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 18.0.ssp,
+                  fontSize: 18.0.sp,
                 ),
               ),
             ),

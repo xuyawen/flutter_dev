@@ -59,40 +59,6 @@ flutter:
   assets:
     - assets/images/
     - assets/data/
-    - assets/images/splash-green.png
-    - assets/images/splash-yellow.png
-    - assets/images/advisory-message.png
-    - assets/images/home-bg.png
-    - assets/images/badge.png
-    - assets/images/cure-record.png
-    - assets/images/doctor-default.png
-    - assets/images/follow-plan.png
-    - assets/images/follow-template.png
-    - assets/images/me.png
-    - assets/images/group-message.png
-    - assets/images/my-department.png
-    - assets/images/my-patient.png
-    - assets/images/patient.png
-    - assets/images/qrcode.png
-    - assets/images/questionnaire.png
-    - assets/images/service.png
-    - assets/images/todo-img.png
-    - assets/images/qrcode-img.png
-    - assets/images/patient-group_bg.png
-    - assets/images/patient-remind.png
-    - assets/images/patient-empty.png
-    - assets/images/patient-to.png
-    - assets/images/patient-search.png
-    - assets/images/patient-plan.png
-    - assets/images/male-icon.png
-    - assets/images/female-icon.png
-    - assets/images/patient-group.png
-    - assets/images/choose-search.png
-    - assets/images/delete-patient.png
-    - assets/images/selected.png
-    - assets/images/unselect.png
-    - assets/images/save.png
-    - assets/images/bubble_gray.png
 
   # An image asset can refer to one or more resolution-specific "variants",
   # https://flutter.dev/assets-and-images/#resolution-aware.

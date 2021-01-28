@@ -13,11 +13,13 @@ class Home extends StatelessWidget {
     return WillPopExit(
         child: Scaffold(
       body: Container(
+        color: Color(0xFFF3F9F8),
         height: ScreenUtil().screenHeight,
         width: ScreenUtil().screenWidth,
         child: SingleChildScrollView(
             child: Container(
           decoration: BoxDecoration(
+            color: Color(0xFFFFFFFF),
             image: DecorationImage(
                 fit: BoxFit.contain,
                 alignment: Alignment.topCenter,
@@ -370,6 +372,7 @@ Widget shadowIcon(Image image, String text, Color color, void Function() tap) {
     child: Container(
       height: 70,
       child: Stack(
+        clipBehavior: Clip.none,
         children: [
           Positioned(child: image),
           Positioned(

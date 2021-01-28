@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
+import 'package:get/get.dart';
+import 'package:flutter_dev/controllers/controllers.dart';
 
-class Wave extends StatefulWidget {
-  Wave({Key key, this.title}) : super(key: key);
+class Wave extends StatelessWidget {
+  Wave({Key key, this.running = false}) : super(key: key);
+  final bool running;
 
-  final String title;
-
-  @override
-  _WaveState createState() => _WaveState();
-}
-
-class _WaveState extends State<Wave> {
   _buildCard({
     Config config,
     Color backgroundColor = Colors.transparent,
@@ -21,6 +17,9 @@ class _WaveState extends State<Wave> {
         child: Container(
       width: double.infinity,
       child: WaveWidget(
+        isLoop: running,
+        duration: 0,
+        waveFrequency: running ? 2 : 0,
         config: config,
         backgroundColor: backgroundColor,
         backgroundImage: backgroundImage,
@@ -41,7 +40,8 @@ class _WaveState extends State<Wave> {
         Color(0xFF8FDDFF),
       ],
       durations: [32000, 21000, 18000, 5000],
-      heightPercentages: [0.25, 0.26, 0.28, 0.31],
+      heightPercentages: [0, 0, 0, 0],
+      // heightPercentages: [0.25, 0.26, 0.28, 0.31],
     ));
   }
 }

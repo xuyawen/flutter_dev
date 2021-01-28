@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dev/constants/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_dev/ui/components/components.dart';
+import 'package:flutter_dev/helpers/helpers.dart';
 import 'package:azlistview/azlistview.dart';
 import 'package:lpinyin/lpinyin.dart';
 
@@ -189,10 +190,6 @@ class _ChoosePatientState extends State<ChoosePatient> {
       ),
     );
   }
-}
-
-String getImgPath(String name, {String format: 'png'}) {
-  return 'assets/images/$name.$format';
 }
 
 class ContactInfo extends ISuspensionBean {

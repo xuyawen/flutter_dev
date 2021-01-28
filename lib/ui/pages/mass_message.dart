@@ -1,12 +1,15 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dev/ui/ui.dart';
 import 'package:get/get.dart';
 import 'package:flutter_dev/constants/routes.dart';
+import 'package:flutter_dev/controllers/controllers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_dev/ui/components/components.dart';
+import 'package:flutter_dev/helpers/helpers.dart';
 
-class MassMessage extends StatelessWidget {
+class MassMessage extends GetView<RecordController> {
   const MassMessage({Key key}) : super(key: key);
 
   @override
@@ -410,6 +413,7 @@ Widget decorateTitle(String title) {
 }
 
 Widget recorderSheet() {
+  RecordController c = Get.put(RecordController());
   return Container(
     height: 237.5.h,
     decoration: BoxDecoration(color: Colors.white, boxShadow: [
@@ -436,14 +440,26 @@ Widget recorderSheet() {
           children: [
             Image.asset("assets/images/microphone-reset.png",
                 width: 60, height: 60),
-            Image.asset("assets/images/microphone-run.png",
-                width: 83, height: 83),
+            GestureDetector(
+                onTap: () => c.running.value = !c.running.value,
+                child: Obx(
+                  () => Image.asset(
+                      c.running.value
+                          ? assetsPath("microphone-stop")
+                          : assetsPath("microphone-run"),
+                      width: 83,
+                      height: 83),
+                )),
             Image.asset("assets/images/microphone-right.png",
                 width: 60, height: 60),
           ],
         ),
-        Wave()
+        Obx(() => c.running.value ? Wave(running: true) : SizedBox.shrink())
       ],
     ),
   );
+}
+
+String assetsPath(String name, {String suffix: 'png', String type: 'images'}) {
+  return 'assets/$type/$name.$suffix';
 }

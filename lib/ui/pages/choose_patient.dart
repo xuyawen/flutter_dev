@@ -162,23 +162,23 @@ class _ChoosePatientState extends State<ChoosePatient> {
                     ContactInfo model = _contacts[index];
                     return getSusItem(context, model.getSuspensionTag());
                   },
+                  indexBarItemHeight: 12.h,
+                  indexBarAlignment: Alignment.topRight,
                   indexBarData: [...kIndexBarData],
+                  indexBarMargin: EdgeInsets.all(10),
                   indexBarOptions: IndexBarOptions(
                     needRebuild: true,
                     ignoreDragCancel: true,
-                    downTextStyle: TextStyle(fontSize: 12, color: Colors.white),
+                    downTextStyle:
+                        TextStyle(fontSize: 12.sp, color: Colors.white),
                     downItemDecoration: BoxDecoration(
                         shape: BoxShape.circle, color: Color(0xFF31ADFF)),
-                    indexHintWidth: 120 / 2,
-                    indexHintHeight: 100 / 2,
+                    indexHintWidth: 50,
+                    indexHintHeight: 50,
                     indexHintDecoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(getImgPath('bubble_gray')),
-                        fit: BoxFit.contain,
-                      ),
-                    ),
+                        color: Color(0xFF02D4C2), shape: BoxShape.circle),
                     indexHintAlignment: Alignment.centerRight,
-                    indexHintChildAlignment: Alignment(-0.25, 0.0),
+                    indexHintChildAlignment: Alignment(0.0, 0.0),
                     indexHintOffset: Offset(-20, 0),
                   ),
                 ),
@@ -248,11 +248,6 @@ Widget getWeChatListItem(
   );
 }
 
-Widget getcheckBoxItem(BuildContext context, ContactInfo model) {
-  // DecorationImage image;
-  return checkBoxItem();
-}
-
 Widget getSusItem(BuildContext context, String tag) {
   return Container(
     height: 30.h,
@@ -269,6 +264,11 @@ Widget getSusItem(BuildContext context, String tag) {
       ),
     ),
   );
+}
+
+Widget getcheckBoxItem(BuildContext context, ContactInfo model) {
+  // DecorationImage image;
+  return checkBoxItem();
 }
 
 Widget checkBoxItem() {

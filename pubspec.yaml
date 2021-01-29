@@ -32,8 +32,9 @@ dependencies:
   permission_handler: 5.0.1
   path_drawing: 0.4.1
   azlistview: 1.1.0
-  lpinyin: ^1.0.9
+  lpinyin: 1.0.9
   wave: 0.1.0
+  timeline_tile: 1.0.0
 
 
   # The following adds the Cupertino Icons font to your application.

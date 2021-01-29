@@ -1,3 +1,5 @@
+import 'package:flutter_dev/controllers/binding/record_binding.dart';
+import 'package:flutter_dev/controllers/controllers.dart';
 import 'package:get/get.dart';
 import 'package:flutter_dev/ui/ui.dart';
 import 'package:flutter_dev/ui/auth/auth.dart';
@@ -24,6 +26,11 @@ class Routes {
   static const PATIENTDETAIL = '/patient_detail';
   static const MASSMESSAGE = '/mass_message';
   static const CHOOSEGROUP = '/choose_group';
+  static const HISTORYMASS = '/history_mass';
+  static const FOLLOWPLAN = '/follow_plan';
+  static const FOLLOWTEMPLATE = '/follow_template';
+  static const CONSULTMESSAGE = '/consult_message';
+  static const MODIFYFOLLOW = '/modify_follow';
 
   // demo
   static const AUDIO = '/audio';
@@ -50,9 +57,14 @@ class Routes {
     GetPage(name: PATIENTDETAIL, page: () => PatientDetail()),
     GetPage(name: MASSMESSAGE, page: () => MassMessage()),
     GetPage(name: CHOOSEGROUP, page: () => ChooseGroup()),
+    GetPage(name: HISTORYMASS, page: () => HistoryMass()),
+    GetPage(name: FOLLOWPLAN, page: () => FollowPlan()),
+    GetPage(name: FOLLOWTEMPLATE, page: () => FollowTemplate()),
+    GetPage(name: CONSULTMESSAGE, page: () => ConsultMessage()),
+    GetPage(name: MODIFYFOLLOW, page: () => ModifyFollow()),
     // demo
     GetPage(name: AUDIO, page: () => SimpleRecorder()),
-    GetPage(name: WAVE, page: () => WaveDemo()),
+    GetPage(name: WAVE, page: () => WaveDemo(), binding: RecordBinding()),
     GetPage(name: CHATS, page: () => ChatHome()),
   ];
 }

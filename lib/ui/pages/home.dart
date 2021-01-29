@@ -219,22 +219,25 @@ class Home extends StatelessWidget {
                           style: TextStyle(
                               color: Color(0xFF333333), fontSize: 14.sp))
                     ]),
-                    Column(children: [
-                      Container(
-                        decoration: BoxDecoration(boxShadow: [
-                          BoxShadow(
-                              color: Color.fromRGBO(91, 213, 193, .3),
-                              offset: Offset(0, 0),
-                              blurRadius: 7.0)
-                        ]),
-                        child: Image.asset("assets/images/group-message.png",
-                            width: 38, height: 38),
-                      ),
-                      SizedBox(height: 8),
-                      Text("群发消息",
-                          style: TextStyle(
-                              color: Color(0xFF333333), fontSize: 14.sp))
-                    ])
+                    GestureDetector(
+                      onTap: () => Get.toNamed(Routes.HISTORYMASS),
+                      child: Column(children: [
+                        Container(
+                          decoration: BoxDecoration(boxShadow: [
+                            BoxShadow(
+                                color: Color.fromRGBO(91, 213, 193, .3),
+                                offset: Offset(0, 0),
+                                blurRadius: 7.0)
+                          ]),
+                          child: Image.asset("assets/images/group-message.png",
+                              width: 38, height: 38),
+                        ),
+                        SizedBox(height: 8),
+                        Text("群发消息",
+                            style: TextStyle(
+                                color: Color(0xFF333333), fontSize: 14.sp))
+                      ]),
+                    )
                   ],
                 ),
               ),
@@ -318,14 +321,14 @@ class Home extends StatelessWidget {
                               width: 51, height: 57.5),
                           "咨询消息",
                           Color.fromRGBO(245, 148, 88, 1),
-                          () {}),
+                          () => Get.toNamed(Routes.CONSULTMESSAGE)),
                       SizedBox(height: 18.h),
                       shadowIcon(
                           Image.asset("assets/images/follow-template.png",
                               width: 51, height: 57.5),
                           "随访模板",
                           Color.fromRGBO(106, 166, 241, 1),
-                          () {}),
+                          () => Get.toNamed(Routes.FOLLOWTEMPLATE)),
                     ],
                   ),
                   Spacer(),
@@ -336,7 +339,7 @@ class Home extends StatelessWidget {
                               width: 51, height: 57.5),
                           "随访计划",
                           Color.fromRGBO(89, 212, 172, 1),
-                          () {}),
+                          () => Get.toNamed(Routes.FOLLOWPLAN)),
                       SizedBox(height: 18.h),
                       shadowIcon(
                           Image.asset("assets/images/me.png",

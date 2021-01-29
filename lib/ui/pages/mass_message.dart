@@ -9,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_dev/ui/components/components.dart';
 import 'package:flutter_dev/helpers/helpers.dart';
 
-class MassMessage extends GetView<RecordController> {
+class MassMessage extends StatelessWidget {
   const MassMessage({Key key}) : super(key: key);
 
   @override
@@ -128,8 +128,12 @@ class MassMessage extends GetView<RecordController> {
                       children: [
                         decorateTitle("语音"),
                         ElevatedButton(
-                            onPressed: () => Get.bottomSheet(recorderSheet(),
-                                barrierColor: Colors.transparent),
+                            onPressed: () async {
+                              await Get.bottomSheet(recorderSheet(),
+                                  barrierColor: Colors.transparent,
+                                  useRootNavigator: true);
+                              print("close sheet");
+                            },
                             style: ButtonStyle(
                                 textStyle: MaterialStateProperty.all(
                                     TextStyle(fontSize: 14)),
@@ -438,28 +442,25 @@ Widget recorderSheet() {
           spacing: 30.w,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
-            Image.asset("assets/images/microphone-reset.png",
+            Image.asset(Utils.assetsPath("microphone-reset"),
                 width: 60, height: 60),
             GestureDetector(
                 onTap: () => c.running.value = !c.running.value,
                 child: Obx(
                   () => Image.asset(
                       c.running.value
-                          ? assetsPath("microphone-stop")
-                          : assetsPath("microphone-run"),
+                          ? Utils.assetsPath("microphone-stop")
+                          : Utils.assetsPath("microphone-run"),
                       width: 83,
                       height: 83),
                 )),
-            Image.asset("assets/images/microphone-right.png",
+            Image.asset(Utils.assetsPath("microphone-right"),
                 width: 60, height: 60),
           ],
         ),
-        Obx(() => c.running.value ? Wave(running: true) : SizedBox.shrink())
+        SizedBox(height: 5.h),
+        Obx(() => Wave(running: c.running.value))
       ],
     ),
   );
-}
-
-String assetsPath(String name, {String suffix: 'png', String type: 'images'}) {
-  return 'assets/$type/$name.$suffix';
 }

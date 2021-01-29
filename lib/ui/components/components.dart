@@ -11,3 +11,4 @@ export 'appbar_gradient.dart';
 export 'expand_item.dart';
 export 'dotted-border/dotted_border.dart';
 export 'wave.dart';
+export 'timeline_tile/timeline_tile.dart';

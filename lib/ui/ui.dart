@@ -12,3 +12,8 @@ export 'pages/choose_patient.dart';
 export 'pages/patient_detail.dart';
 export 'pages/mass_message.dart';
 export 'pages/choose_group.dart';
+export 'pages/history_mass.dart';
+export 'pages/follow_plan.dart';
+export 'pages/follow_template.dart';
+export 'pages/consult_message.dart';
+export 'pages/modify_follow.dart';

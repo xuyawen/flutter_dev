@@ -12,7 +12,7 @@ Widget expandItem() {
             children: [
               CircleAvatar(
                   backgroundImage: AssetImage(
-                "assets/images/patient-remind.png",
+                "assets/images/qrcode.png",
               )),
               SizedBox(width: 8.w),
               Column(

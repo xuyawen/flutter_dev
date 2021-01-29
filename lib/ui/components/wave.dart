@@ -16,16 +16,17 @@ class Wave extends StatelessWidget {
     return Expanded(
         child: Container(
       width: double.infinity,
-      child: WaveWidget(
-        isLoop: running,
-        duration: 0,
-        waveFrequency: running ? 2 : 0,
-        config: config,
-        backgroundColor: backgroundColor,
-        backgroundImage: backgroundImage,
-        size: Size(double.infinity, double.infinity),
-        waveAmplitude: 0,
-      ),
+      child: running
+          ? WaveWidget(
+              duration: 0,
+              waveFrequency: 2,
+              config: config,
+              backgroundColor: backgroundColor,
+              backgroundImage: backgroundImage,
+              size: Size(double.infinity, double.infinity),
+              waveAmplitude: 0,
+            )
+          : Container(color: Color(0xFF8FDDFF)),
     ));
   }
 

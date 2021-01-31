@@ -49,7 +49,10 @@ class HistoryMass extends StatelessWidget {
   Widget messageItem() {
     return Container(
       width: 343.w,
-      color: Color(0xFFF5F8F8),
+      decoration: BoxDecoration(
+        color: Color(0xFFF5F8F8),
+        borderRadius: BorderRadius.all(Radius.circular(16.0)),
+      ),
       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 16.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,8 +71,11 @@ class HistoryMass extends StatelessWidget {
           ),
           SizedBox(height: 12.5.h),
           Container(
-            color: Color(0xFFEFF2F2),
             padding: EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: Color(0xFFEFF2F2),
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            ),
             child: Text(
                 "患者朋友们你们好，明天将有一次免费的公益面诊活动。活动地址在上海徐汇医院门诊部二楼。活动时间为上午9:00~11:30，欢迎大家到时前来咨询。",
                 style: TextStyle(color: Color(0xFF666666), fontSize: 14.sp)),
@@ -147,14 +153,8 @@ class HistoryMass extends StatelessWidget {
               textStyle: MaterialStateProperty.all(TextStyle(fontSize: 14.sp)),
               elevation: MaterialStateProperty.all(0),
               overlayColor: MaterialStateProperty.all(Color(0xFF9EEEE7)),
-              backgroundColor: MaterialStateProperty.resolveWith((states) {
-                //设置按下时的背景颜色
-                // if (states.contains(MaterialState.pressed)) {
-                //   return Colors.blue[200];
-                // }
-                //默认不使用背景颜色
-                return Color(0xFF19D5BB);
-              })),
+              backgroundColor:
+                  MaterialStateProperty.resolveWith((_) => Color(0xFF19D5BB))),
           child: Row(
             children: [
               Text("32″", style: TextStyle(color: Color(0xFFFFFFFF))),

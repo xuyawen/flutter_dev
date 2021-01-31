@@ -167,24 +167,7 @@ class MassMessage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              width: 145.w,
-                              height: 20.h,
-                              padding: EdgeInsets.only(left: 8.w),
-                              decoration: BoxDecoration(
-                                  color: Color(0xFF19D5BB),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(3.0))),
-                              child: Row(
-                                children: [
-                                  Text("32",
-                                      style: TextStyle(color: Colors.white)),
-                                  SizedBox(width: 5.w),
-                                  Icon(Icons.signal_cellular_4_bar_outlined,
-                                      size: 15, color: Colors.white)
-                                ],
-                              ),
-                            ),
+                            recorderMessage(),
                             ImageIcon(
                               AssetImage("assets/images/delete-patient.png"),
                               size: 16,
@@ -195,24 +178,7 @@ class MassMessage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              width: 145.w,
-                              height: 20.h,
-                              padding: EdgeInsets.only(left: 8.w),
-                              decoration: BoxDecoration(
-                                  color: Color(0xFF19D5BB),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(3.0))),
-                              child: Row(
-                                children: [
-                                  Text("18",
-                                      style: TextStyle(color: Colors.white)),
-                                  SizedBox(width: 5.w),
-                                  Icon(Icons.signal_cellular_4_bar_outlined,
-                                      size: 15, color: Colors.white)
-                                ],
-                              ),
-                            ),
+                            recorderMessage(),
                             ImageIcon(
                               AssetImage("assets/images/delete-patient.png"),
                               size: 16,
@@ -326,10 +292,10 @@ class MassMessage extends StatelessWidget {
                               decoration: BoxDecoration(
                                   border: Border(
                                       bottom: BorderSide(
-                                          width: 1, color: Color(0xFF333333)))),
+                                          width: 1, color: Color(0xFF00BFAF)))),
                               child: Text("《肌张力  PROM评定量表》",
                                   style: TextStyle(
-                                    color: Color(0xFF333333),
+                                    color: Color(0xFF00BFAF),
                                     fontSize: 14.sp,
                                   )),
                             ),
@@ -348,10 +314,10 @@ class MassMessage extends StatelessWidget {
                               decoration: BoxDecoration(
                                   border: Border(
                                       bottom: BorderSide(
-                                          width: 1, color: Color(0xFF333333)))),
+                                          width: 1, color: Color(0xFF00BFAF)))),
                               child: Text("《肌张力  PROM评定量表》",
                                   style: TextStyle(
-                                    color: Color(0xFF333333),
+                                    color: Color(0xFF00BFAF),
                                     fontSize: 14.sp,
                                   )),
                             ),
@@ -396,71 +362,94 @@ class MassMessage extends StatelessWidget {
       ),
     );
   }
-}
 
-Widget decorateTitle(String title) {
-  return Row(
-    children: [
-      Container(
-        width: 6.w,
-        height: 14.h,
-        decoration: BoxDecoration(color: Color(0xFF09CFBE)),
-      ),
-      SizedBox(width: 4.w),
-      Text(title,
-          style: TextStyle(
-              color: Color(0xFF333333),
-              fontSize: 16.sp,
-              fontWeight: FontWeight.bold))
-    ],
-  );
-}
+  Widget recorderMessage() {
+    return SizedBox(
+      width: 122.w,
+      height: 25.h,
+      child: ElevatedButton(
+          onPressed: () {},
+          style: ButtonStyle(
+              textStyle: MaterialStateProperty.all(TextStyle(fontSize: 14.sp)),
+              elevation: MaterialStateProperty.all(0),
+              overlayColor: MaterialStateProperty.all(Color(0xFF9EEEE7)),
+              backgroundColor:
+                  MaterialStateProperty.resolveWith((_) => Color(0xFF19D5BB))),
+          child: Row(
+            children: [
+              Text("32″", style: TextStyle(color: Color(0xFFFFFFFF))),
+              SizedBox(width: 5.w),
+              Image.asset(Utils.assetsPath("signal-03"),
+                  width: 16.w, height: 16.h)
+            ],
+          )),
+    );
+  }
 
-Widget recorderSheet() {
-  RecordController c = Get.put(RecordController());
-  return Container(
-    height: 237.5.h,
-    decoration: BoxDecoration(color: Colors.white, boxShadow: [
-      BoxShadow(
-          color: Color.fromRGBO(198, 219, 214, .34),
-          offset: Offset(0, 0),
-          blurRadius: 28.0)
-    ]),
-    child: Column(
+  Widget decorateTitle(String title) {
+    return Row(
       children: [
-        SizedBox(height: 30.h),
-        Text("按住说话",
-            style: TextStyle(color: Color(0xFF666666), fontSize: 16.sp)),
-        SizedBox(height: 5.5.h),
-        // Text("按下麦克风开始录音",
-        //     style: TextStyle(color: Color(0xFF999999), fontSize: 14.sp)),
-        Text("00:00",
-            style: TextStyle(color: Color(0xFF333333), fontSize: 15.sp)),
-        SizedBox(height: 9.h),
-        // Image.asset("assets/images/microphone-wait.png", width: 83, height: 83),
-        Wrap(
-          spacing: 30.w,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            Image.asset(Utils.assetsPath("microphone-reset"),
-                width: 60, height: 60),
-            GestureDetector(
-                onTap: () => c.running.value = !c.running.value,
-                child: Obx(
-                  () => Image.asset(
-                      c.running.value
-                          ? Utils.assetsPath("microphone-stop")
-                          : Utils.assetsPath("microphone-run"),
-                      width: 83,
-                      height: 83),
-                )),
-            Image.asset(Utils.assetsPath("microphone-right"),
-                width: 60, height: 60),
-          ],
+        Container(
+          width: 6.w,
+          height: 14.h,
+          decoration: BoxDecoration(color: Color(0xFF09CFBE)),
         ),
-        SizedBox(height: 5.h),
-        Obx(() => Wave(running: c.running.value))
+        SizedBox(width: 4.w),
+        Text(title,
+            style: TextStyle(
+                color: Color(0xFF333333),
+                fontSize: 16.sp,
+                fontWeight: FontWeight.bold))
       ],
-    ),
-  );
+    );
+  }
+
+  Widget recorderSheet() {
+    RecordController c = Get.put(RecordController());
+    return Container(
+      height: 237.5.h,
+      decoration: BoxDecoration(color: Colors.white, boxShadow: [
+        BoxShadow(
+            color: Color.fromRGBO(198, 219, 214, .34),
+            offset: Offset(0, 0),
+            blurRadius: 28.0)
+      ]),
+      child: Column(
+        children: [
+          SizedBox(height: 30.h),
+          Text("按住说话",
+              style: TextStyle(color: Color(0xFF666666), fontSize: 16.sp)),
+          SizedBox(height: 5.5.h),
+          // Text("按下麦克风开始录音",
+          //     style: TextStyle(color: Color(0xFF999999), fontSize: 14.sp)),
+          Text("00:00",
+              style: TextStyle(color: Color(0xFF333333), fontSize: 15.sp)),
+          SizedBox(height: 9.h),
+          // Image.asset("assets/images/microphone-wait.png", width: 83, height: 83),
+          Wrap(
+            spacing: 30.w,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              Image.asset(Utils.assetsPath("microphone-reset"),
+                  width: 60, height: 60),
+              GestureDetector(
+                  onTap: () => c.running.value = !c.running.value,
+                  child: Obx(
+                    () => Image.asset(
+                        c.running.value
+                            ? Utils.assetsPath("microphone-stop")
+                            : Utils.assetsPath("microphone-run"),
+                        width: 83,
+                        height: 83),
+                  )),
+              Image.asset(Utils.assetsPath("microphone-right"),
+                  width: 60, height: 60),
+            ],
+          ),
+          SizedBox(height: 5.h),
+          Obx(() => Wave(running: c.running.value))
+        ],
+      ),
+    );
+  }
 }

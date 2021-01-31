@@ -11,9 +11,10 @@ Widget expandItem() {
           Row(
             children: [
               CircleAvatar(
+                  backgroundColor: Colors.transparent,
                   backgroundImage: AssetImage(
-                "assets/images/qrcode.png",
-              )),
+                    "assets/images/qrcode.png",
+                  )),
               SizedBox(width: 8.w),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

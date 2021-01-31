@@ -106,29 +106,9 @@ class FollowPlan extends StatelessWidget {
                           children: [
                             Text("随访中",
                                 style: TextStyle(
-                                    color: Color(0xFF00BFAF),
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.bold)),
-                            SizedBox(height: 3.h),
-                            Image.asset(Utils.assetsPath("decorate-02"),
-                                width: 20.62, height: 8.31)
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: 84.w,
-                        height: 48.5.h,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("已结束",
-                                style: TextStyle(
-                                    color: Color(0xFF00BFAF),
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.bold)),
-                            SizedBox(height: 3.h),
-                            Image.asset(Utils.assetsPath("decorate-02"),
-                                width: 20.62, height: 8.31)
+                                    color: Color(0xFF333333),
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold))
                           ],
                         ),
                       ),
@@ -139,6 +119,20 @@ class FollowPlan extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("已取消",
+                                style: TextStyle(
+                                    color: Color(0xFF333333),
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold))
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 84.w,
+                        height: 48.5.h,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("已结束",
                                 style: TextStyle(
                                     color: Color(0xFF333333),
                                     fontSize: 16.sp,

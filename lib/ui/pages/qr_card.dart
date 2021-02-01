@@ -38,9 +38,12 @@ class QRcard extends StatelessWidget {
                   padding: EdgeInsets.only(left: 37.w),
                   margin: EdgeInsets.fromLTRB(40.w, 66.h, 40.w, 55.h),
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(8.r)),
-                  ),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(8.r)),
+                      image: DecorationImage(
+                          fit: BoxFit.fill,
+                          alignment: Alignment.center,
+                          image: AssetImage("assets/images/qrcode-bg.png"))),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

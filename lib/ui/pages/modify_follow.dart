@@ -12,6 +12,7 @@ class ModifyFollow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<double> list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -25,6 +26,7 @@ class ModifyFollow extends StatelessWidget {
                 fontWeight: FontWeight.bold)),
       ),
       body: Container(
+        color: Color(0xFFFFFFFF),
         child: Column(
           children: [
             Expanded(
@@ -106,21 +108,77 @@ class ModifyFollow extends StatelessWidget {
                     Divider(height: 1, color: Color(0xFFDBDBDB)),
                     SizedBox(height: 20.h),
                     // VerticalDivider(color: Color(0xFFE9EBEB)),
-                    TimelineTile(
-                      alignment: TimelineAlign.start,
-                      isFirst: true,
-                      hasIndicator: true,
-                      afterLineStyle: const LineStyle(
-                        color: Colors.deepOrange,
-                        thickness: 6,
+                    Padding(
+                      padding: EdgeInsets.only(right: 16.w),
+                      child: Column(
+                        children: [
+                          TimelineNode(
+                            style: TimelineNodeStyle(
+                                pointType: TimelineNodePointType.Circle,
+                                pointColor: Color(0xFF66E1D7),
+                                lineType: TimelineNodeLineType.Full,
+                                lineColor: Color(0xFF66E1D7)),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                _followHead(),
+                                SizedBox(height: 16.h),
+                                Utils.text("随访执行时间", Color(0xFF333333),
+                                    size: 14.sp, weight: FontWeight.bold),
+                                SizedBox(height: 10.h),
+                                _followTime(),
+                                SizedBox(height: 14.h),
+                                _textFollow(),
+                                SizedBox(height: 30.h)
+                              ],
+                            ),
+                          ),
+                          TimelineNode(
+                            style: TimelineNodeStyle(
+                                pointType: TimelineNodePointType.Circle,
+                                pointColor: Color(0xFF66E1D7),
+                                lineType: TimelineNodeLineType.Full,
+                                lineColor: Color(0xFF66E1D7)),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                _followHead(),
+                                SizedBox(height: 16.h),
+                                Utils.text("随访执行时间", Color(0xFF333333),
+                                    size: 14.sp, weight: FontWeight.bold),
+                                SizedBox(height: 10.h),
+                                _followTime(),
+                                SizedBox(height: 14.h),
+                                _questionnaireScale(),
+                                SizedBox(height: 30.h)
+                              ],
+                            ),
+                          ),
+                          TimelineNode(
+                            isLast: true,
+                            style: TimelineNodeStyle(
+                                pointType: TimelineNodePointType.Circle,
+                                pointColor: Color(0xFF66E1D7),
+                                lineType: TimelineNodeLineType.Full,
+                                lineColor: Color(0xFF66E1D7)),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                _followHead(),
+                                SizedBox(height: 16.h),
+                                Utils.text("随访执行时间", Color(0xFF333333),
+                                    size: 14.sp, weight: FontWeight.bold),
+                                SizedBox(height: 10.h),
+                                _followTime(),
+                                SizedBox(height: 14.h),
+                                _selectFollowTask(),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 45.h)
+                        ],
                       ),
-                      endChild: Container(
-                        constraints: const BoxConstraints(
-                          minHeight: 120,
-                        ),
-                        color: Colors.lightGreenAccent,
-                      ),
-                    ),
+                    )
                   ],
                 ),
               ),
@@ -173,6 +231,283 @@ class ModifyFollow extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _textFollow() {
+    return Container(
+      padding: EdgeInsets.all(6),
+      decoration: BoxDecoration(
+        color: Color(0xFFF5F8F8),
+        border: Border.all(color: Color(0xFFD8D8D8), width: 0.5),
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      ),
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(5),
+            child: Row(
+              children: [
+                Image.asset(Utils.assetsPath("remove-icon"),
+                    width: 24.w, height: 24.h),
+                SizedBox(width: 6.w),
+                Utils.text("文字随访", Color(0xFF666666),
+                    size: 14.sp, weight: FontWeight.bold),
+              ],
+            ),
+          ),
+          SizedBox(
+              height: 127.h,
+              child: Stack(
+                children: [
+                  Positioned(
+                      child: TextField(
+                    maxLength: 300,
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(10),
+                        prefixStyle: TextStyle(color: Color(0xFFD1D1D1)),
+                        hintText:
+                            "患者朋友们你们好，明天将有一次免费的公益面诊活动。活动地址在上海徐汇医院门诊部二楼。活动时间为上午9:00~11:30，欢迎大家到时前来咨询。",
+                        hintStyle: TextStyle(
+                            fontSize: 13.sp, color: Color(0xFF999999)),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Color(0xFFDED38E), width: 0.5),
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        ),
+                        focusColor: Colors.black,
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Color(0xFFDED38E), width: 0.5),
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        ),
+                        filled: true,
+                        counterText: "",
+                        fillColor: Color(0xFFF9F8F1)),
+                    maxLines: 300,
+                  )),
+                  Positioned(
+                      bottom: 10.h,
+                      right: 10.w,
+                      child: Text(
+                        "已输入0/300",
+                        style: TextStyle(
+                            color: Color(0xFFC1C1C1), fontSize: 12.sp),
+                      ))
+                ],
+              ))
+        ],
+      ),
+    );
+  }
+
+  Widget _followTime() {
+    return Row(
+      children: [
+        SizedBox(
+          width: 90.w,
+          child: TextField(
+            decoration: InputDecoration(
+                contentPadding: EdgeInsets.fromLTRB(16.w, 0, 0, 0),
+                prefixStyle: TextStyle(color: Color(0xFFD1D1D1)),
+                hintText: "2",
+                hintStyle: TextStyle(fontSize: 14.sp, color: Color(0xFF999999)),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xFFDCDCDC), width: 0.5),
+                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                ),
+                focusColor: Colors.black,
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xFFDCDCDC), width: 0.5),
+                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                ),
+                filled: true,
+                fillColor: Color(0xFFFFFFFF)),
+            maxLines: 1,
+          ),
+        ),
+        SizedBox(width: 6.w),
+        SizedBox(
+          width: 70.w,
+          child: TextField(
+            decoration: InputDecoration(
+                contentPadding: EdgeInsets.fromLTRB(16.w, 0, 0, 0),
+                suffixIcon: Icon(Icons.arrow_drop_down,
+                    size: 35.sp, color: Color(0xFFACACAC)),
+                prefixStyle: TextStyle(color: Color(0xFFD1D1D1)),
+                hintText: "天",
+                hintStyle: TextStyle(fontSize: 14.sp, color: Color(0xFF999999)),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xFFDCDCDC), width: 0.5),
+                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                ),
+                focusColor: Colors.black,
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xFFDCDCDC), width: 0.5),
+                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                ),
+                filled: true,
+                fillColor: Color(0xFFFFFFFF)),
+            maxLines: 1,
+          ),
+        ),
+        SizedBox(width: 23.w),
+        SizedBox(
+          width: 120.w,
+          child: TextField(
+            decoration: InputDecoration(
+                contentPadding: EdgeInsets.fromLTRB(16.w, 0, 0, 0),
+                suffixIcon: Icon(Icons.arrow_drop_down,
+                    size: 35.sp, color: Color(0xFFACACAC)),
+                prefixStyle: TextStyle(color: Color(0xFFD1D1D1)),
+                hintText: "6:23 AM",
+                hintStyle: TextStyle(fontSize: 14.sp, color: Color(0xFF999999)),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xFFDCDCDC), width: 0.5),
+                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                ),
+                focusColor: Colors.black,
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xFFDCDCDC), width: 0.5),
+                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                ),
+                filled: true,
+                fillColor: Color(0xFFFFFFFF)),
+            maxLines: 1,
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _followHead() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Utils.text("第一次随访任务", Color(0xFF333333),
+            size: 16.sp, weight: FontWeight.bold),
+        Row(children: [
+          Image.asset(Utils.assetsPath("remove-icon"),
+              width: 24.w, height: 24.h),
+          SizedBox(width: 6.w),
+          Utils.text("删除任务", Color(0xFF666666), size: 14.sp),
+        ])
+      ],
+    );
+  }
+
+  Widget _questionnaireScale() {
+    return Container(
+        width: 323.w,
+        decoration: BoxDecoration(
+          color: Color(0xFFF5F8F8),
+          border: Border.all(color: Color(0xFFD8D8D8), width: 0.5),
+          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(5),
+              child: Row(
+                children: [
+                  Image.asset(Utils.assetsPath("remove-icon"),
+                      width: 24.w, height: 24.h),
+                  SizedBox(width: 6.w),
+                  Utils.text("文字随访", Color(0xFF666666),
+                      size: 14.sp, weight: FontWeight.bold),
+                ],
+              ),
+            ),
+            Center(
+              child: DottedBorder(
+                radius: Radius.circular(8),
+                color: Color(0xFFCCCCCC),
+                borderType: BorderType.RRect,
+                child: ClipRRect(
+                  child: Container(
+                    width: 112.w,
+                    height: 40.h,
+                    child: Row(
+                      children: [
+                        Icon(Icons.add, color: Color(0xFFD4D4D4), size: 20.sp),
+                        SizedBox(width: 5.w),
+                        Utils.text("添加随访任务", Color(0xFF666666), size: 14.sp)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 16.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(bottom: 1.h),
+                    decoration: BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(
+                                width: 1, color: Color(0xFF00BFAF)))),
+                    child: Text("《肌张力  PROM评定量表》",
+                        style: TextStyle(
+                          color: Color(0xFF00BFAF),
+                          fontSize: 14.sp,
+                        )),
+                  ),
+                  ImageIcon(
+                    AssetImage("assets/images/delete-patient.png"),
+                    size: 16,
+                    color: Color(0xFFBCBCBC),
+                  )
+                ],
+              ),
+            )
+          ],
+        ));
+  }
+
+  Widget _selectFollowTask() {
+    return Container(
+      width: 323.w,
+      height: 60.h,
+      alignment: Alignment.center,
+      padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 91.5.w),
+      decoration: BoxDecoration(
+        color: Color(0xFFF5F8F8),
+        border: Border.all(color: Color(0xFFD8D8D8), width: 0.5),
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      ),
+      child: Container(
+        child: DottedBorder(
+          radius: Radius.circular(8),
+          padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 5.w),
+          color: Color(0xFFCCCCCC),
+          borderType: BorderType.RRect,
+          child: ClipRRect(
+            child: Row(
+              children: [
+                Icon(Icons.add, color: Color(0xFFD4D4D4), size: 20.sp),
+                SizedBox(width: 5.w),
+                Utils.text("添加随访任务", Color(0xFF666666), size: 14.sp)
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class TimeLine extends StatelessWidget {
+  const TimeLine({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      child: VerticalDivider(color: Colors.red),
     );
   }
 }

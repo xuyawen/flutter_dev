@@ -382,7 +382,7 @@ Widget shadowIcon(Image image, String text, Color color, void Function() tap) {
           Positioned(
               bottom: 0,
               child: SizedBox(
-                width: 50,
+                width: 49.w,
                 child: Text(
                   text,
                   style: TextStyle(color: Color(0xFF333333), fontSize: 12.sp),

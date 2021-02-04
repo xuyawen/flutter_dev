@@ -192,7 +192,7 @@ class PatientGroup extends StatelessWidget {
                         Container(
                             padding: EdgeInsets.only(left: 16.w, right: 16.w),
                             height: 40.h,
-                            child: TextFormField(
+                            child: TextField(
                               decoration: InputDecoration(
                                   prefixIconConstraints: BoxConstraints(
                                       maxWidth: 32.21.w, maxHeight: 11.71.h),

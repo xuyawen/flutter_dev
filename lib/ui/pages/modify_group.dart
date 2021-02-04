@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter_dev/constants/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_dev/ui/components/components.dart';
+import 'package:flutter_dev/helpers/helpers.dart';
 
 class ModifyGroup extends StatelessWidget {
   const ModifyGroup({Key key}) : super(key: key);
@@ -134,7 +135,14 @@ class ModifyGroup extends StatelessWidget {
                 Expanded(
                     flex: 2,
                     child: GestureDetector(
-                      onTap: () => Get.dialog(removeHint()),
+                      onTap: () => Get.dialog(confirmHint(
+                          title: "删除提示",
+                          content: "删除分组后，分组内成员将自动移动至未分组列表，删除后分组不可恢复，是否删除分组？",
+                          cancel: "取消",
+                          ok: Text("删除",
+                              style: TextStyle(
+                                  color: Color(0xFFF97247), fontSize: 14.sp),
+                              textAlign: TextAlign.center))),
                       child: Container(
                         height: 64.h,
                         alignment: Alignment.center,
@@ -196,63 +204,4 @@ class ModifyGroup extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget removeHint() {
-  return Center(
-    child: Container(
-      clipBehavior: Clip.antiAlias,
-      width: 283.w,
-      height: 163.h,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(8.r))),
-      child: Column(
-        children: [
-          Padding(
-              padding: EdgeInsets.only(top: 12.h, bottom: 10.h),
-              child: Text("删除提示",
-                  style: TextStyle(
-                      color: Color(0xFF333333),
-                      fontSize: 17.sp,
-                      fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center)),
-          Expanded(
-              child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.w),
-                  child: Text("删除分组后，分组内成员将自动移动至未分组列表，删除后分组不可恢复，是否删除分组？",
-                      style:
-                          TextStyle(color: Color(0xFF666666), fontSize: 14.sp),
-                      textAlign: TextAlign.left))),
-          Container(
-            height: 47.h,
-            child: Flex(
-              direction: Axis.horizontal,
-              children: [
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () => Get.back(),
-                    child: Center(
-                      child: Text("取消",
-                          style: TextStyle(
-                              color: Color(0xFF999999), fontSize: 14.sp),
-                          textAlign: TextAlign.center),
-                    ),
-                  ),
-                ),
-                VerticalDivider(color: Color(0xFFE9EBEB)),
-                Expanded(
-                  child: Text("删除",
-                      style:
-                          TextStyle(color: Color(0xFFF97247), fontSize: 14.sp),
-                      textAlign: TextAlign.center),
-                ),
-              ],
-            ),
-            color: Color(0xFFF4F8F8),
-          )
-        ],
-      ),
-    ),
-  );
 }

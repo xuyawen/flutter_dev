@@ -31,7 +31,7 @@ class FollowTemplate extends StatelessWidget {
                     overlayColor: MaterialStateProperty.all(Color(0xFF999999)),
                     backgroundColor: MaterialStateProperty.resolveWith(
                         (states) => Color(0xFFFFFFFF))),
-                onPressed: () {},
+                onPressed: () async {},
                 child: Text("筛选",
                     style: TextStyle(
                         color: Color(0xFF333333),
@@ -44,30 +44,84 @@ class FollowTemplate extends StatelessWidget {
         width: ScreenUtil().screenWidth,
         height: ScreenUtil().screenHeight,
         color: Color(0xFFF5F8F8),
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Wrap(
-                direction: Axis.vertical,
-                spacing: 12.h,
-                children: [
-                  for (var _ in Iterable.generate(7)) templateItem(),
-                ],
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+                child: Column(
+                  children: [
+                    Wrap(
+                      direction: Axis.vertical,
+                      spacing: 12.h,
+                      children: [
+                        for (var _ in Iterable.generate(7)) templateItem(),
+                      ],
+                    ),
+                    Container(
+                      width: 343.w,
+                      height: 62.h,
+                      alignment: Alignment.center,
+                      child: Text("— 没有更多内容啦 —",
+                          style: TextStyle(
+                              color: Color(0xFFC7C7C7), fontSize: 13.sp)),
+                    )
+                  ],
+                ),
               ),
-              Container(
-                width: 343.w,
-                height: 62.h,
-                alignment: Alignment.center,
-                child: Text("— 没有更多内容啦 —",
-                    style:
-                        TextStyle(color: Color(0xFFC7C7C7), fontSize: 13.sp)),
-              )
-            ],
-          ),
+            ),
+            _dropDown(),
+          ],
         ),
       ),
     );
+  }
+
+  Widget _dropDown() {
+    return Positioned(
+        top: 0,
+        child: Container(
+          width: ScreenUtil().screenWidth,
+          decoration: BoxDecoration(color: Colors.white),
+          child: Column(
+            children: [
+              Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 15.h, horizontal: 16.w),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Utils.text("全部", Color(0xFF666666),
+                          size: 16.sp, weight: FontWeight.bold),
+                      Image.asset(Utils.assetsPath("right-icon"),
+                          width: 22.w, height: 22.h)
+                    ],
+                  )),
+              Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 15.h, horizontal: 16.w),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Utils.text("科室共享模版库", Color(0xFF666666),
+                          size: 16.sp, weight: FontWeight.bold),
+                      // Image.asset(Utils.assetsPath("right-icon"), width: 22.w, height: 22.h)
+                    ],
+                  )),
+              Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 15.h, horizontal: 16.w),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Utils.text("我的创建模板", Color(0xFF666666),
+                          size: 16.sp, weight: FontWeight.bold),
+                      // Image.asset(Utils.assetsPath("right-icon"), width: 22.w, height: 22.h)
+                    ],
+                  ))
+            ],
+          ),
+        ));
   }
 
   Widget templateItem() {

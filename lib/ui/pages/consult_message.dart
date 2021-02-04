@@ -28,26 +28,32 @@ class ConsultMessage extends StatelessWidget {
         width: ScreenUtil().screenWidth,
         height: ScreenUtil().screenHeight,
         color: Color(0xFFF5F8F8),
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Wrap(
-                direction: Axis.vertical,
-                spacing: 12.h,
-                children: [
-                  for (var _ in Iterable.generate(20)) messageItem(_),
-                ],
-              ),
-              Container(
-                width: 343.w,
-                height: 62.h,
-                alignment: Alignment.center,
-                child: Text("— 没有更多内容啦 —",
-                    style:
-                        TextStyle(color: Color(0xFFC7C7C7), fontSize: 13.sp)),
-              )
-            ],
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+            child: Column(
+              children: [
+                Wrap(
+                  direction: Axis.vertical,
+                  spacing: 12.h,
+                  children: [
+                    for (var _ in Iterable.generate(20))
+                      GestureDetector(
+                        onTap: () => Get.toNamed(Routes.CHATS),
+                        child: messageItem(_),
+                      ),
+                  ],
+                ),
+                Container(
+                  width: 343.w,
+                  height: 62.h,
+                  alignment: Alignment.center,
+                  child: Text("— 没有更多内容啦 —",
+                      style:
+                          TextStyle(color: Color(0xFFC7C7C7), fontSize: 13.sp)),
+                )
+              ],
+            ),
           ),
         ),
       ),

@@ -21,8 +21,8 @@ class Utils {
   }
 
   static Widget text(String text, Color color,
-      {FontWeight weight: FontWeight.normal, double size: 14}) {
+      {FontWeight weight: FontWeight.normal, double size: 14, TextAlign align}) {
     return Text(text,
-        style: TextStyle(color: color, fontSize: size, fontWeight: weight));
+        style: TextStyle(color: color, fontSize: size, fontWeight: weight), textAlign: align);
   }
 }

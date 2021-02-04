@@ -129,7 +129,7 @@ class MassMessage extends StatelessWidget {
                         decorateTitle("语音"),
                         ElevatedButton(
                             onPressed: () async {
-                              await Get.bottomSheet(recorderSheet(),
+                              await Get.bottomSheet(_recorderSheet(),
                                   barrierColor: Colors.transparent,
                                   useRootNavigator: true);
                               print("close sheet");
@@ -404,7 +404,7 @@ class MassMessage extends StatelessWidget {
     );
   }
 
-  Widget recorderSheet() {
+  Widget _recorderSheet() {
     RecordController c = Get.put(RecordController());
     return Container(
       height: 237.5.h,

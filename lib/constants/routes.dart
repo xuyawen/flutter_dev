@@ -31,6 +31,8 @@ class Routes {
   static const FOLLOWTEMPLATE = '/follow_template';
   static const CONSULTMESSAGE = '/consult_message';
   static const MODIFYFOLLOW = '/modify_follow';
+  static const FOLLOWDETAIL = '/follow_detail';
+  static const GIVEFOLLOW = '/give_follow';
 
   // demo
   static const AUDIO = '/audio';
@@ -62,6 +64,8 @@ class Routes {
     GetPage(name: FOLLOWTEMPLATE, page: () => FollowTemplate()),
     GetPage(name: CONSULTMESSAGE, page: () => ConsultMessage()),
     GetPage(name: MODIFYFOLLOW, page: () => ModifyFollow()),
+    GetPage(name: FOLLOWDETAIL, page: () => FollowDetail()),
+    GetPage(name: GIVEFOLLOW, page: () => GiveFollow()),
     // demo
     GetPage(name: AUDIO, page: () => SimpleRecorder()),
     GetPage(name: WAVE, page: () => WaveDemo(), binding: RecordBinding()),

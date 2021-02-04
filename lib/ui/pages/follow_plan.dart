@@ -147,7 +147,11 @@ class FollowPlan extends StatelessWidget {
                 direction: Axis.vertical,
                 spacing: 10.5.h,
                 children: [
-                  for (var _ in Iterable.generate(7)) followItem(),
+                  for (var _ in Iterable.generate(7))
+                    GestureDetector(
+                      onTap: () => Get.toNamed(Routes.FOLLOWDETAIL),
+                      child: followItem(),
+                    ),
                 ],
               ),
               Container(

@@ -17,3 +17,5 @@ export 'pages/follow_plan.dart';
 export 'pages/follow_template.dart';
 export 'pages/consult_message.dart';
 export 'pages/modify_follow.dart';
+export 'pages/follow_detail.dart';
+export 'pages/give_follow.dart';

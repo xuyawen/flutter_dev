@@ -4,6 +4,7 @@ import 'package:flutter_dev/constants/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dev/ui/components/components.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_dev/helpers/helpers.dart';
 
 class Home extends StatelessWidget {
   const Home({Key key}) : super(key: key);
@@ -203,29 +204,13 @@ class Home extends StatelessWidget {
                                 color: Color(0xFF333333), fontSize: 14.sp))
                       ]),
                     ),
-                    Column(children: [
-                      Container(
-                        decoration: BoxDecoration(boxShadow: [
-                          BoxShadow(
-                              color: Color.fromRGBO(135, 193, 247, .3),
-                              offset: Offset(0, 1.5),
-                              blurRadius: 7.0)
-                        ]),
-                        child: Image.asset("assets/images/patient.png",
-                            width: 38, height: 38),
-                      ),
-                      SizedBox(height: 8),
-                      Text("患者报到",
-                          style: TextStyle(
-                              color: Color(0xFF333333), fontSize: 14.sp))
-                    ]),
                     GestureDetector(
                       onTap: () => Get.toNamed(Routes.HISTORYMASS),
                       child: Column(children: [
                         Container(
                           decoration: BoxDecoration(boxShadow: [
                             BoxShadow(
-                                color: Color.fromRGBO(91, 213, 193, .3),
+                                color: Color.fromRGBO(135, 193, 247, .3),
                                 offset: Offset(0, 0),
                                 blurRadius: 7.0)
                           ]),
@@ -237,7 +222,23 @@ class Home extends StatelessWidget {
                             style: TextStyle(
                                 color: Color(0xFF333333), fontSize: 14.sp))
                       ]),
-                    )
+                    ),
+                    Column(children: [
+                      Container(
+                        decoration: BoxDecoration(boxShadow: [
+                          BoxShadow(
+                              color: Color.fromRGBO(89, 213, 201, .3),
+                              offset: Offset(0, 1.5),
+                              blurRadius: 7.0)
+                        ]),
+                        child: Image.asset(Utils.assetsPath("new-follow"),
+                            width: 38, height: 38),
+                      ),
+                      SizedBox(height: 8),
+                      Text("新建随访",
+                          style: TextStyle(
+                              color: Color(0xFF333333), fontSize: 14.sp))
+                    ])
                   ],
                 ),
               ),
@@ -282,16 +283,16 @@ class Home extends StatelessWidget {
                   SizedBox(width: 21.5.w),
                   Column(children: [
                     shadowIcon(
-                        Image.asset("assets/images/my-patient.png",
+                        Image.asset(Utils.assetsPath("my-patient"),
                             width: 51, height: 57.5),
                         "我的患者",
                         Color.fromRGBO(101, 163, 238, 1),
                         () => Get.toNamed(Routes.PATIENTGROUP)),
                     SizedBox(height: 18.h),
                     shadowIcon(
-                        Image.asset("assets/images/my-department.png",
+                        Image.asset(Utils.assetsPath("patient-register"),
                             width: 51, height: 57.5),
-                        "我的科室",
+                        "患者报到",
                         Color.fromRGBO(245, 149, 88, 1),
                         () {})
                   ]),
@@ -299,16 +300,16 @@ class Home extends StatelessWidget {
                   Column(
                     children: [
                       shadowIcon(
-                          Image.asset("assets/images/cure-record.png",
+                          Image.asset(Utils.assetsPath("consult-message"),
                               width: 51, height: 57.5),
-                          "治疗记录",
+                          "咨询消息",
                           Color.fromRGBO(246, 198, 73, 1),
-                          () {}),
+                          () => Get.toNamed(Routes.CONSULTMESSAGE)),
                       SizedBox(height: 18.h),
                       shadowIcon(
-                          Image.asset("assets/images/questionnaire.png",
+                          Image.asset(Utils.assetsPath("scale-library"),
                               width: 51, height: 57.5),
-                          "问卷量表",
+                          "量表库",
                           Color.fromRGBO(88, 212, 171, 1),
                           () {}),
                     ],
@@ -317,14 +318,14 @@ class Home extends StatelessWidget {
                   Column(
                     children: [
                       shadowIcon(
-                          Image.asset("assets/images/advisory-message.png",
+                          Image.asset(Utils.assetsPath("scale-record"),
                               width: 51, height: 57.5),
-                          "咨询消息",
+                          "量表记录",
                           Color.fromRGBO(245, 148, 88, 1),
                           () => Get.toNamed(Routes.CONSULTMESSAGE)),
                       SizedBox(height: 18.h),
                       shadowIcon(
-                          Image.asset("assets/images/follow-template.png",
+                          Image.asset(Utils.assetsPath("follow-template"),
                               width: 51, height: 57.5),
                           "随访模板",
                           Color.fromRGBO(106, 166, 241, 1),
@@ -335,14 +336,14 @@ class Home extends StatelessWidget {
                   Column(
                     children: [
                       shadowIcon(
-                          Image.asset("assets/images/follow-plan.png",
+                          Image.asset(Utils.assetsPath("follow-plan"),
                               width: 51, height: 57.5),
                           "随访计划",
                           Color.fromRGBO(89, 212, 172, 1),
                           () => Get.toNamed(Routes.FOLLOWPLAN)),
                       SizedBox(height: 18.h),
                       shadowIcon(
-                          Image.asset("assets/images/me.png",
+                          Image.asset(Utils.assetsPath("me"),
                               width: 51, height: 57.5),
                           "个人中心",
                           Color.fromRGBO(255, 197, 19, 1),
@@ -380,8 +381,14 @@ Widget shadowIcon(Image image, String text, Color color, void Function() tap) {
           Positioned(child: image),
           Positioned(
               bottom: 0,
-              child: Text(text,
-                  style: TextStyle(color: Color(0xFF333333), fontSize: 12.sp)))
+              child: SizedBox(
+                width: 50,
+                child: Text(
+                  text,
+                  style: TextStyle(color: Color(0xFF333333), fontSize: 12.sp),
+                  textAlign: TextAlign.center,
+                ),
+              ))
         ],
       ),
     ),

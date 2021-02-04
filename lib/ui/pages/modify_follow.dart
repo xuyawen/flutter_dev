@@ -172,9 +172,11 @@ class ModifyFollow extends StatelessWidget {
                                 _followTime(),
                                 SizedBox(height: 14.h),
                                 _selectFollowTask(),
+                                SizedBox(height: 30.h),
                               ],
                             ),
                           ),
+                          _addNextFollow(),
                           SizedBox(height: 45.h)
                         ],
                       ),
@@ -201,29 +203,32 @@ class ModifyFollow extends StatelessWidget {
                       style:
                           TextStyle(color: Color(0xFF999999), fontSize: 14.sp)),
                   SizedBox(height: 8.h),
-                  Container(
-                    width: ScreenUtil().screenWidth,
-                    height: 64.h,
-                    alignment: Alignment.center,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(Utils.assetsPath("give-icon"),
-                            width: 16.w, height: 16.h),
-                        SizedBox(width: 10.w),
-                        Text("去发放",
-                            style: TextStyle(
-                                color: Color(0xFFFFFFFF),
-                                fontSize: 17.sp,
-                                fontWeight: FontWeight.bold))
-                      ],
+                  GestureDetector(
+                    onTap: () => Get.toNamed(Routes.GIVEFOLLOW),
+                    child: Container(
+                      width: ScreenUtil().screenWidth,
+                      height: 64.h,
+                      alignment: Alignment.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(Utils.assetsPath("give-icon"),
+                              width: 16.w, height: 16.h),
+                          SizedBox(width: 10.w),
+                          Text("去发放",
+                              style: TextStyle(
+                                  color: Color(0xFFFFFFFF),
+                                  fontSize: 17.sp,
+                                  fontWeight: FontWeight.bold))
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                          gradient: const LinearGradient(colors: [
+                            Color(0xFF58DCB4),
+                            Color(0xFF4CD9EE),
+                          ])),
                     ),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                        gradient: const LinearGradient(colors: [
-                          Color(0xFF58DCB4),
-                          Color(0xFF4CD9EE),
-                        ])),
                   ),
                 ],
               ),
@@ -231,6 +236,87 @@ class ModifyFollow extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _chooseTemplateTypeSheet() {
+    return Container(
+      height: 251.5.h,
+      decoration: BoxDecoration(color: Colors.white, boxShadow: [
+        BoxShadow(
+            color: Color.fromRGBO(198, 219, 214, .34),
+            offset: Offset(0, 0),
+            blurRadius: 28.0)
+      ]),
+      child: Column(
+        children: [
+          SizedBox(height: 19.h),
+          Utils.text("随访类型", Color(0xFF666666),
+              size: 17.sp, weight: FontWeight.bold),
+          SizedBox(height: 17.5.h),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 20.h),
+            child: Utils.text("文字随访", Color(0xFF666666),
+                size: 15.sp, align: TextAlign.center),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 20.h),
+            child: Utils.text("问卷量表", Color(0xFF666666),
+                size: 15.sp, align: TextAlign.center),
+          ),
+          Container(
+            height: 10.h,
+            color: Color(0xFFF5F5F2),
+          ),
+          GestureDetector(
+            excludeFromSemantics: true,
+            onTap: () => Get.back(),
+            child: Container(
+              width: ScreenUtil().screenWidth,
+              color: Colors.white,
+              height: 57.h,
+              child: Center(
+                  child: Utils.text("取消", Color(0xFF999999),
+                      size: 15.sp, align: TextAlign.center)),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _addNextFollow() {
+    return SizedBox(
+      width: 184.w,
+      height: 42.5.h,
+      child: ElevatedButton(
+          onPressed: () async {
+            await Get.bottomSheet(_chooseTemplateTypeSheet(),
+                barrierColor: Colors.transparent, useRootNavigator: true);
+          },
+          style: ButtonStyle(
+              textStyle: MaterialStateProperty.all(TextStyle(fontSize: 14)),
+              elevation: MaterialStateProperty.all(0),
+              overlayColor: MaterialStateProperty.all(Color(0xFF9EEEE7)),
+              side: MaterialStateProperty.all(
+                  BorderSide(color: Color(0xFF00BFAF), width: 1)),
+              backgroundColor: MaterialStateProperty.resolveWith((states) {
+                //设置按下时的背景颜色
+                // if (states.contains(MaterialState.pressed)) {
+                //   return Colors.blue[200];
+                // }
+                //默认不使用背景颜色
+                return Color(0xFFFFFFFF);
+              })),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.add, color: Color(0xFF00BFAF), size: 28),
+              SizedBox(width: 5.w),
+              Utils.text("添加下次随访任务", Color(0xFF00BFAF),
+                  size: 16.sp, weight: FontWeight.bold)
+            ],
+          )),
     );
   }
 
@@ -306,6 +392,7 @@ class ModifyFollow extends StatelessWidget {
       children: [
         SizedBox(
           width: 90.w,
+          height: 36.h,
           child: TextField(
             decoration: InputDecoration(
                 contentPadding: EdgeInsets.fromLTRB(16.w, 0, 0, 0),
@@ -329,6 +416,7 @@ class ModifyFollow extends StatelessWidget {
         SizedBox(width: 6.w),
         SizedBox(
           width: 70.w,
+          height: 36.h,
           child: TextField(
             decoration: InputDecoration(
                 contentPadding: EdgeInsets.fromLTRB(16.w, 0, 0, 0),
@@ -354,6 +442,7 @@ class ModifyFollow extends StatelessWidget {
         SizedBox(width: 23.w),
         SizedBox(
           width: 120.w,
+          height: 36.h,
           child: TextField(
             decoration: InputDecoration(
                 contentPadding: EdgeInsets.fromLTRB(16.w, 0, 0, 0),
@@ -414,25 +503,27 @@ class ModifyFollow extends StatelessWidget {
                   Image.asset(Utils.assetsPath("remove-icon"),
                       width: 24.w, height: 24.h),
                   SizedBox(width: 6.w),
-                  Utils.text("文字随访", Color(0xFF666666),
+                  Utils.text("问卷量表", Color(0xFF666666),
                       size: 14.sp, weight: FontWeight.bold),
                 ],
               ),
             ),
-            Center(
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 90.w),
               child: DottedBorder(
                 radius: Radius.circular(8),
                 color: Color(0xFFCCCCCC),
                 borderType: BorderType.RRect,
                 child: ClipRRect(
                   child: Container(
-                    width: 112.w,
-                    height: 40.h,
+                    width: 140.w,
+                    height: 35.h,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.add, color: Color(0xFFD4D4D4), size: 20.sp),
                         SizedBox(width: 5.w),
-                        Utils.text("添加随访任务", Color(0xFF666666), size: 14.sp)
+                        Utils.text("添加量表", Color(0xFF666666), size: 14.sp)
                       ],
                     ),
                   ),
@@ -472,26 +563,30 @@ class ModifyFollow extends StatelessWidget {
     return Container(
       width: 323.w,
       height: 60.h,
-      alignment: Alignment.center,
-      padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 91.5.w),
+      padding: EdgeInsets.symmetric(vertical: 10.h),
       decoration: BoxDecoration(
         color: Color(0xFFF5F8F8),
         border: Border.all(color: Color(0xFFD8D8D8), width: 0.5),
         borderRadius: BorderRadius.all(Radius.circular(8.0)),
       ),
-      child: Container(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 90.w),
         child: DottedBorder(
           radius: Radius.circular(8),
-          padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 5.w),
           color: Color(0xFFCCCCCC),
           borderType: BorderType.RRect,
           child: ClipRRect(
-            child: Row(
-              children: [
-                Icon(Icons.add, color: Color(0xFFD4D4D4), size: 20.sp),
-                SizedBox(width: 5.w),
-                Utils.text("添加随访任务", Color(0xFF666666), size: 14.sp)
-              ],
+            child: Container(
+              width: 140.w,
+              height: 40.h,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.add, color: Color(0xFFD4D4D4), size: 20.sp),
+                  SizedBox(width: 5.w),
+                  Utils.text("添加随访任务", Color(0xFF666666), size: 14.sp)
+                ],
+              ),
             ),
           ),
         ),
